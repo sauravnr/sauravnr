@@ -79,7 +79,7 @@ export function Button({
           className="absolute rounded-full bg-white/50"
           initial={{ width: 10, height: 10, opacity: 1 }}
           animate={{ width: 200, height: 200, opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           style={{
             left: ripple.x,
             top: ripple.y,
