@@ -29,7 +29,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Gradient orbs */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
