@@ -10,33 +10,33 @@ import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main className="relative bg-gray-900 text-white overflow-hidden">
+    <main className="relative min-h-screen bg-gray-900 text-white overflow-hidden">
       <AnimatedBackground />
       <CursorFollower />
       <Navigation />
 
-      <section id="home" className="relative z-10">
+      <section id="home" className="relative z-10 px-4 sm:px-6 lg:px-8">
         <Hero />
       </section>
 
-      <section id="about" className="relative z-10">
+      <section id="about" className="relative z-10 px-4 sm:px-6 lg:px-8">
         <About />
       </section>
 
-      <section id="skills" className="relative z-10">
+      <section id="skills" className="relative z-10 px-4 sm:px-6 lg:px-8">
         <Skills />
       </section>
 
-      <section id="projects" className="relative z-10">
+      <section id="projects" className="relative z-10 px-4 sm:px-6 lg:px-8">
         <Projects />
       </section>
 
-      <section id="contact" className="relative z-10">
+      <section id="contact" className="relative z-10 px-4 sm:px-6 lg:px-8">
         <Contact />
       </section>
 
-      <footer className="relative z-10 border-t border-white/10 py-8 px-4 text-center">
-        <p className="text-gray-400">
+      <footer className="relative z-10 border-t border-white/10 py-8 px-4 sm:px-6 lg:px-8 text-center">
+        <p className="text-gray-400 text-sm sm:text-base">
           © 2024 Saurav Niraula. Built with React, Next.js, Tailwind CSS, and
           Framer Motion.
         </p>

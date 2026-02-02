@@ -100,14 +100,14 @@ export function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 rounded-lg backdrop-blur
+                    className={`w-full px-4 py-3 rounded-lg backdrop-blur-lg
                       ${
                         isDark
-                          ? "bg-white/5 border-white/10 text-white placeholder-gray-500"
-                          : "bg-white/10 border-white/20 text-gray-900 placeholder-gray-600"
+                          ? "bg-white/8 border-white/15 text-white placeholder-gray-400"
+                          : "bg-white/15 border-white/30 text-gray-900 placeholder-gray-600"
                       }
                       border transition-all duration-300
-                      focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20
+                      focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30
                     `}
                     placeholder="John Doe"
                   />
@@ -127,14 +127,14 @@ export function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 rounded-lg backdrop-blur
+                    className={`w-full px-4 py-3 rounded-lg backdrop-blur-lg
                       ${
                         isDark
-                          ? "bg-white/5 border-white/10 text-white placeholder-gray-500"
-                          : "bg-white/10 border-white/20 text-gray-900 placeholder-gray-600"
+                          ? "bg-white/8 border-white/15 text-white placeholder-gray-400"
+                          : "bg-white/15 border-white/30 text-gray-900 placeholder-gray-600"
                       }
                       border transition-all duration-300
-                      focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20
+                      focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30
                     `}
                     placeholder="john@example.com"
                   />
@@ -154,14 +154,14 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className={`w-full px-4 py-3 rounded-lg backdrop-blur
+                    className={`w-full px-4 py-3 rounded-lg backdrop-blur-lg
                       ${
                         isDark
-                          ? "bg-white/5 border-white/10 text-white placeholder-gray-500"
-                          : "bg-white/10 border-white/20 text-gray-900 placeholder-gray-600"
+                          ? "bg-white/8 border-white/15 text-white placeholder-gray-400"
+                          : "bg-white/15 border-white/30 text-gray-900 placeholder-gray-600"
                       }
                       border transition-all duration-300
-                      focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/20
+                      focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30
                       resize-none
                     `}
                     placeholder="Tell me about your project..."

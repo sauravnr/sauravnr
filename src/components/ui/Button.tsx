@@ -26,24 +26,24 @@ export function Button({
   const [ripples, setRipples] = useState<RipplePos[]>([]);
 
   const baseClasses =
-    "relative font-semibold transition-all duration-300 overflow-hidden rounded-lg";
+    "relative font-semibold transition-all duration-300 overflow-hidden rounded-lg inline-block whitespace-nowrap";
 
   const variants = {
     primary: isDark
-      ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/50"
-      : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-400/50",
+      ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/50 active:shadow-cyan-500/30"
+      : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-400/50 active:shadow-cyan-400/30",
     secondary: isDark
-      ? "bg-gradient-to-r from-purple-500 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/50"
-      : "bg-gradient-to-r from-purple-400 to-pink-500 text-white hover:shadow-lg hover:shadow-purple-400/50",
+      ? "bg-gradient-to-r from-purple-500 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/50 active:shadow-purple-500/30"
+      : "bg-gradient-to-r from-purple-400 to-pink-500 text-white hover:shadow-lg hover:shadow-purple-400/50 active:shadow-purple-400/30",
     outline: isDark
-      ? "border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10"
-      : "border-2 border-cyan-400 text-cyan-500 hover:bg-cyan-400/10",
+      ? "border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 active:bg-cyan-500/20"
+      : "border-2 border-cyan-400 text-cyan-500 hover:bg-cyan-400/10 active:bg-cyan-400/20",
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    sm: "px-4 py-2 text-sm min-w-fit",
+    md: "px-6 py-3 text-base min-w-fit",
+    lg: "px-8 py-4 text-lg min-w-fit",
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -68,9 +68,12 @@ export function Button({
       whileTap={{ scale: 0.95 }}
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
       onClick={handleClick}
-      {...(props as any)}
+      type="button"
+      disabled={props.disabled || false}
     >
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 flex items-center justify-center">
+        {children}
+      </span>
 
       {/* Ripple effects */}
       {ripples.map((ripple, index) => (

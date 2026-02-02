@@ -19,6 +19,12 @@ module.exports = {
       },
       backdropBlur: {
         xs: "2px",
+        sm: "4px",
+        md: "12px",
+        lg: "16px",
+      },
+      spacing: {
+        safe: "max(1rem, env(safe-area-inset-left))",
       },
     },
   },
