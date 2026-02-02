@@ -24,7 +24,7 @@ export function Hero() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.8 },
     },
   };
 
@@ -37,7 +37,7 @@ export function Hero() {
             x: [0, 100, 0],
             y: [0, 50, 0],
           }}
-          transition={{ duration: 20, repeat: Infinity, ease: [0, 0, 1, 1] }}
+          transition={{ duration: 20, repeat: Infinity }}
           className={`absolute w-96 h-96 rounded-full opacity-30 mix-blend-screen
             ${isDark ? "bg-cyan-500" : "bg-cyan-400"}
           `}
@@ -48,7 +48,7 @@ export function Hero() {
             x: [0, -100, 0],
             y: [0, -50, 0],
           }}
-          transition={{ duration: 25, repeat: Infinity, ease: [0, 0, 1, 1] }}
+          transition={{ duration: 25, repeat: Infinity }}
           className={`absolute w-96 h-96 rounded-full opacity-30 mix-blend-screen
             ${isDark ? "bg-purple-500" : "bg-purple-400"}
           `}
