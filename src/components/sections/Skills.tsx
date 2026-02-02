@@ -29,7 +29,7 @@ export function Skills() {
   };
 
   return (
-    <section className="relative py-20 px-4">
+    <section className="relative py-20">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
