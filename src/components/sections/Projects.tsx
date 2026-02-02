@@ -31,9 +31,8 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       >
         <div
           onClick={() => setIsFlipped(!isFlipped)}
-          className="cursor-pointer w-full h-full"
+          className="cursor-pointer w-full h-full relative"
           style={{
-            transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
             transformStyle: "preserve-3d",
             transition: "transform 0.6s",
           }}
@@ -42,12 +41,14 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           <div
             style={{
               backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
+              position: "absolute",
+              inset: 0,
             }}
           >
             <GlassCard
               hover
-              className={`p-8 h-full flex flex-col justify-between
-                bg-gradient-to-br ${project.color} opacity-10`}
+              className={`p-8 h-full flex flex-col justify-between bg-gradient-to-br ${project.color}`}
             >
               <div>
                 <h3
@@ -102,7 +103,10 @@ function ProjectCard({ project, index }: ProjectCardProps) {
           <div
             style={{
               backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
+              position: "absolute",
+              inset: 0,
             }}
           >
             <GlassCard className="p-8 h-full flex flex-col justify-between">

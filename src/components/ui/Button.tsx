@@ -43,7 +43,7 @@ export function Button({
   const sizes = {
     sm: "px-4 py-2 text-sm min-w-fit",
     md: "px-6 py-3 text-base min-w-fit",
-    lg: "px-8 py-4 text-lg min-w-fit",
+    lg: "px-6 md:px-8 lg:px-10 py-4 md:text-lg lg:text-xl min-w-fit",
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -133,15 +133,9 @@ export function About() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="relative"
               >
-                <div
-                  className={`grid md:grid-cols-2 gap-8 items-center
-                  ${index % 2 === 1 ? "md:flex md:flex-row-reverse" : ""}
-                `}
-                >
+                <div className="grid md:grid-cols-2 gap-8 items-center">
                   <div
-                    className={`md:text-right
-                    ${index % 2 === 1 ? "md:text-left" : ""}
-                  `}
+                    className={`md:text-right ${index % 2 === 1 ? "md:order-2 md:text-left" : "md:order-1"}`}
                   >
                     <h4
                       className={`text-3xl font-bold mb-2
@@ -151,7 +145,9 @@ export function About() {
                       {item.year}
                     </h4>
                   </div>
-                  <GlassCard className="p-6">
+                  <GlassCard
+                    className={`p-6 ${index % 2 === 1 ? "md:order-1" : "md:order-2"}`}
+                  >
                     <h5
                       className={`text-xl font-semibold mb-2
                       ${isDark ? "text-white" : "text-gray-900"}
