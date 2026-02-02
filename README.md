@@ -1,22 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Saurav Niraula - Portfolio Website
 
-## Getting Started
+A modern, futuristic portfolio website built with Next.js, React, Tailwind CSS, Framer Motion, and Three.js. Features smooth animations, glassmorphism design, interactive 3D elements, and a custom cursor follower.
 
-First, run the development server:
+**Live Demo:** http://localhost:3000 (development)
+
+## 🎨 Features
+
+- **Cyber-Organic Design**: Blend of organic flowing shapes and futuristic tech elements
+- **Glassmorphism UI**: Frosted glass panels with subtle neon gradients
+- **Smooth Animations**: Powered by Framer Motion with scroll-triggered effects
+- **Interactive 3D Background**: Particle system with cursor attraction
+- **Dark/Light Mode**: System preference detection with persistent storage
+- **Cursor Follower**: Custom animated cursor with trailing effect
+- **Ripple Button Effects**: Click-triggered ripple animations
+- **Responsive Design**: Fully mobile-optimized
+- **Contact Form**: Integrated API endpoint for message submissions
+- **Project Showcase**: Interactive flip cards for project display
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
 
 ```bash
+# Clone or navigate to project
+cd d:\practise\sauravnr
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── api/
+│   │   └── contact/          # Contact form API endpoint
+│   ├── layout.tsx            # Root layout with ThemeProvider
+│   ├── page.tsx              # Main portfolio page
+│   └── globals.css           # Global styles
+├── components/
+│   ├── Navigation.tsx        # Top navigation with theme toggle
+│   ├── sections/             # Page sections
+│   │   ├── Hero.tsx          # Hero section
+│   │   ├── About.tsx         # About & timeline
+│   │   ├── Skills.tsx        # Skills display
+│   │   ├── Projects.tsx      # Project cards
+│   │   └── Contact.tsx       # Contact form & social links
+│   └── ui/                   # Reusable components
+│       ├── Button.tsx        # Animated button with ripple
+│       ├── GlassCard.tsx     # Glassmorphism card
+│       ├── AnimatedBackground.tsx  # Particle system
+│       └── CursorFollower.tsx      # Cursor effect
+├── lib/
+│   ├── theme-context.tsx     # Dark/light mode context
+│   └── constants.ts          # Projects, skills, timeline data
+└── utils/                    # Utility functions
+```
+
+## 🎯 Customization Guide
+
+### Update Personal Information
+
+Edit `src/lib/constants.ts`:
+
+```typescript
+// Update social links
+export const SOCIAL_LINKS = {
+  github: "https://github.com/YOUR_USERNAME",
+  linkedin: "https://linkedin.com/in/YOUR_PROFILE",
+  twitter: "https://twitter.com/YOUR_HANDLE",
+  email: "your.email@domain.com",
+};
+```
+
+### Available Scripts
+
+```bash
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+## 🚀 Deployment to Vercel
+
+1. **Push to GitHub**:
+
+   ```bash
+   git add .
+   git commit -m "Portfolio website ready for deployment"
+   git push
+   ```
+
+2. **Deploy**:
+   - Go to [vercel.com](https://vercel.com)
+   - Import your GitHub repository
+   - Click Deploy
+
+3. **Custom Domain** (sauravniraula.com.np):
+   - Add domain in Vercel dashboard
+   - Update DNS records at your registrar
+
+---
+
+**Built with ❤️ using Next.js, React, and Tailwind CSS**
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
