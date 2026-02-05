@@ -20,30 +20,33 @@ export function About() {
   };
 
   return (
-    <section className="relative py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="about"
+      className="relative py-20 md:py-24 flex justify-center"
+    >
+      <div className="w-full max-w-6xl px-6 sm:px-8 lg:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className={`text-4xl md:text-5xl font-bold mb-12 text-center
-            ${isDark ? "text-white" : "text-gray-900"}
+          className={`text-3xl md:text-5xl font-semibold mb-12 text-center tracking-tight
+            ${isDark ? "text-slate-100" : "text-slate-900"}
           `}
         >
           About Me
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12 mb-16">
-          {/* Bio */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="w-full md:max-w-xl md:justify-self-end"
           >
             <GlassCard className="p-8 h-full">
               <p
                 className={`text-lg leading-relaxed whitespace-pre-line
-                ${isDark ? "text-gray-300" : "text-gray-700"}
+                ${isDark ? "text-slate-300" : "text-slate-700"}
               `}
               >
                 {BIO}
@@ -51,65 +54,63 @@ export function About() {
             </GlassCard>
           </motion.div>
 
-          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="grid grid-cols-2 gap-6"
+            className="grid grid-cols-2 gap-6 w-full md:max-w-xl md:justify-self-start"
           >
             <GlassCard className="p-6 text-center">
               <div
                 className={`text-4xl font-bold mb-2
-                ${isDark ? "text-cyan-400" : "text-cyan-500"}
+                ${isDark ? "text-teal-300" : "text-teal-600"}
               `}
               >
                 2+
               </div>
-              <p className={isDark ? "text-gray-400" : "text-gray-600"}>
+              <p className={isDark ? "text-slate-400" : "text-slate-600"}>
                 Years Experience
               </p>
             </GlassCard>
             <GlassCard className="p-6 text-center">
               <div
                 className={`text-4xl font-bold mb-2
-                ${isDark ? "text-purple-400" : "text-purple-500"}
+                ${isDark ? "text-amber-300" : "text-amber-600"}
               `}
               >
                 5+
               </div>
-              <p className={isDark ? "text-gray-400" : "text-gray-600"}>
+              <p className={isDark ? "text-slate-400" : "text-slate-600"}>
                 Projects Shipped
               </p>
             </GlassCard>
             <GlassCard className="p-6 text-center">
               <div
                 className={`text-4xl font-bold mb-2
-                ${isDark ? "text-blue-400" : "text-blue-500"}
+                ${isDark ? "text-sky-300" : "text-sky-600"}
               `}
               >
                 100%
               </div>
-              <p className={isDark ? "text-gray-400" : "text-gray-600"}>
+              <p className={isDark ? "text-slate-400" : "text-slate-600"}>
                 Client Focus
               </p>
             </GlassCard>
             <GlassCard className="p-6 text-center">
               <div
                 className={`text-4xl font-bold mb-2
-                ${isDark ? "text-pink-400" : "text-pink-500"}
+                ${isDark ? "text-emerald-300" : "text-emerald-600"}
               `}
               >
                 8+
               </div>
-              <p className={isDark ? "text-gray-400" : "text-gray-600"}>
+              <p className={isDark ? "text-slate-400" : "text-slate-600"}>
                 Tech Skills
               </p>
             </GlassCard>
           </motion.div>
         </div>
 
-        {/* Timeline */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -117,8 +118,8 @@ export function About() {
           className="relative"
         >
           <h3
-            className={`text-2xl font-bold mb-8 text-center
-            ${isDark ? "text-white" : "text-gray-900"}
+            className={`text-2xl font-semibold mb-8 text-center
+            ${isDark ? "text-slate-100" : "text-slate-900"}
           `}
           >
             My Journey
@@ -139,7 +140,7 @@ export function About() {
                   >
                     <h4
                       className={`text-3xl font-bold mb-2
-                      ${isDark ? "text-cyan-400" : "text-cyan-500"}
+                      ${isDark ? "text-teal-300" : "text-teal-600"}
                     `}
                     >
                       {item.year}
@@ -150,12 +151,12 @@ export function About() {
                   >
                     <h5
                       className={`text-xl font-semibold mb-2
-                      ${isDark ? "text-white" : "text-gray-900"}
+                      ${isDark ? "text-slate-100" : "text-slate-900"}
                     `}
                     >
                       {item.title}
                     </h5>
-                    <p className={isDark ? "text-gray-400" : "text-gray-700"}>
+                    <p className={isDark ? "text-slate-400" : "text-slate-700"}>
                       {item.description}
                     </p>
                   </GlassCard>

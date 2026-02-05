@@ -6,7 +6,7 @@ import { useTheme } from "@/lib/theme-context";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   children: React.ReactNode;
 }
 
@@ -26,24 +26,25 @@ export function Button({
   const [ripples, setRipples] = useState<RipplePos[]>([]);
 
   const baseClasses =
-    "relative font-semibold transition-all duration-300 overflow-hidden rounded-lg inline-block whitespace-nowrap";
+    "relative inline-flex items-center justify-center gap-2 font-semibold transition-all duration-300 overflow-hidden rounded-full whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--page-bg)] disabled:opacity-60 disabled:cursor-not-allowed";
 
   const variants = {
     primary: isDark
-      ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:shadow-lg hover:shadow-cyan-500/50 active:shadow-cyan-500/30"
-      : "bg-gradient-to-r from-cyan-400 to-blue-500 text-white hover:shadow-lg hover:shadow-cyan-400/50 active:shadow-cyan-400/30",
+      ? "bg-gradient-to-r from-teal-400 via-cyan-400 to-sky-500 text-slate-950 shadow-[0_14px_30px_-18px_rgba(45,212,191,0.8)] hover:shadow-[0_18px_40px_-20px_rgba(56,189,248,0.9)]"
+      : "bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-600 text-white shadow-[0_14px_30px_-18px_rgba(14,165,233,0.6)] hover:shadow-[0_18px_40px_-20px_rgba(14,165,233,0.8)]",
     secondary: isDark
-      ? "bg-gradient-to-r from-purple-500 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/50 active:shadow-purple-500/30"
-      : "bg-gradient-to-r from-purple-400 to-pink-500 text-white hover:shadow-lg hover:shadow-purple-400/50 active:shadow-purple-400/30",
+      ? "bg-gradient-to-r from-amber-300 to-orange-500 text-slate-950 shadow-[0_12px_24px_-16px_rgba(251,191,36,0.8)] hover:shadow-[0_16px_34px_-18px_rgba(249,115,22,0.9)]"
+      : "bg-gradient-to-r from-amber-400 to-orange-600 text-white shadow-[0_12px_24px_-16px_rgba(249,115,22,0.55)] hover:shadow-[0_16px_34px_-18px_rgba(249,115,22,0.8)]",
     outline: isDark
-      ? "border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 active:bg-cyan-500/20"
-      : "border-2 border-cyan-400 text-cyan-500 hover:bg-cyan-400/10 active:bg-cyan-400/20",
+      ? "border border-slate-600 text-slate-100 hover:border-teal-400/70 hover:text-white hover:bg-teal-400/10"
+      : "border border-slate-300 text-slate-900 hover:border-teal-500/70 hover:bg-teal-500/10",
   };
 
   const sizes = {
     sm: "px-4 py-2 text-sm min-w-fit",
     md: "px-6 py-3 text-base min-w-fit",
     lg: "px-6 md:px-8 lg:px-10 py-4 md:text-lg lg:text-xl min-w-fit",
+    xl: "h-12 md:h-14 px-12 text-base md:text-lg lg:text-xl min-w-fit",
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -64,8 +65,8 @@ export function Button({
 
   return (
     <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
       onClick={handleClick}
       type="button"

@@ -57,15 +57,18 @@ export function Contact() {
   };
 
   const socialLinks = [
-    { name: "GitHub", icon: "🐙", url: SOCIAL_LINKS.github },
-    { name: "LinkedIn", icon: "💼", url: SOCIAL_LINKS.linkedin },
-    { name: "Twitter", icon: "𝕏", url: SOCIAL_LINKS.twitter },
-    { name: "Email", icon: "✉️", url: `mailto:${SOCIAL_LINKS.email}` },
+    { name: "GitHub", icon: "GH", url: SOCIAL_LINKS.github },
+    { name: "LinkedIn", icon: "IN", url: SOCIAL_LINKS.linkedin },
+    { name: "Twitter", icon: "X", url: SOCIAL_LINKS.twitter },
+    { name: "Email", icon: "@", url: `mailto:${SOCIAL_LINKS.email}` },
   ];
 
   return (
-    <section className="relative py-20 px-4">
-      <div className="max-w-4xl mx-auto">
+    <section
+      id="contact"
+      className="relative py-20 md:py-24 flex justify-center"
+    >
+      <div className="w-full max-w-5xl px-6 sm:px-8 lg:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +81,6 @@ export function Contact() {
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -186,7 +188,7 @@ export function Contact() {
                     disabled={submitted || loading}
                   >
                     {submitted
-                      ? "✓ Message Sent!"
+                      ? "Message sent"
                       : loading
                         ? "Sending..."
                         : "Send Message"}
@@ -196,14 +198,12 @@ export function Contact() {
             </GlassCard>
           </motion.div>
 
-          {/* Social Links & Info */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            {/* Social Links */}
             <GlassCard className="p-8">
               <h3
                 className={`text-xl font-bold mb-6
@@ -213,7 +213,7 @@ export function Contact() {
                 Connect With Me
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                {socialLinks.map((link, index) => (
+                {socialLinks.map((link) => (
                   <motion.a
                     key={link.name}
                     href={link.url}
@@ -227,7 +227,9 @@ export function Contact() {
                       }
                     `}
                   >
-                    <div className="text-3xl mb-2">{link.icon}</div>
+                    <div className="text-xl font-semibold mb-2">
+                      {link.icon}
+                    </div>
                     <p
                       className={`text-sm font-medium
                       ${isDark ? "text-cyan-300" : "text-cyan-600"}
@@ -240,7 +242,6 @@ export function Contact() {
               </div>
             </GlassCard>
 
-            {/* Resume Download */}
             <GlassCard className="p-8 bg-gradient-to-br from-purple-500/10 to-pink-500/10">
               <h3
                 className={`text-xl font-bold mb-3
@@ -270,8 +271,8 @@ export function Contact() {
                   text-white font-semibold transition-all duration-300
                 `}
               >
-                <span>📄</span>
-                <span className="ml-2">Download CV</span>
+                <span>CV</span>
+                <span className="ml-2">Download</span>
               </motion.a>
             </GlassCard>
           </motion.div>

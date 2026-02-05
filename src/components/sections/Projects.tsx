@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Button } from "@/components/ui/Button";
 import { useTheme } from "@/lib/theme-context";
 import { PROJECTS } from "@/lib/constants";
 
@@ -37,7 +36,6 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             transition: "transform 0.6s",
           }}
         >
-          {/* Front of card */}
           <div
             style={{
               backfaceVisibility: "hidden",
@@ -99,7 +97,6 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             </GlassCard>
           </div>
 
-          {/* Back of card */}
           <div
             style={{
               backfaceVisibility: "hidden",
@@ -155,13 +152,16 @@ export function Projects() {
   const { isDark } = useTheme();
 
   return (
-    <section className="relative py-20 px-4">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="projects"
+      className="relative py-20 md:py-24 flex justify-center"
+    >
+      <div className="w-full max-w-6xl px-6 sm:px-8 lg:px-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className={`text-4xl md:text-5xl font-bold mb-12 text-center
+          className={`text-4xl md:text-5xl font-bold mb-10 text-center
             ${isDark ? "text-white" : "text-gray-900"}
           `}
         >
@@ -172,7 +172,7 @@ export function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className={`text-center max-w-2xl mx-auto mb-16
+          className={`text-center max-w-2xl mx-auto mb-14
             ${isDark ? "text-gray-400" : "text-gray-600"}
           `}
         >
@@ -186,14 +186,13 @@ export function Projects() {
           ))}
         </div>
 
-        {/* Future 3D planets section (placeholder for evolution) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <GlassCard className="p-12 bg-gradient-to-r from-purple-500/10 to-pink-500/10">
+          <GlassCard className="p-10 bg-gradient-to-r from-purple-500/10 to-pink-500/10">
             <h3
               className={`text-2xl font-bold mb-4
               ${isDark ? "text-white" : "text-gray-900"}
@@ -202,7 +201,7 @@ export function Projects() {
               Coming Soon: 3D Project Explorer
             </h3>
             <p
-              className={`max-w-xl mx-auto mb-6
+              className={`max-w-xl mx-auto
               ${isDark ? "text-gray-400" : "text-gray-600"}
             `}
             >

@@ -21,14 +21,14 @@ export function GlassCard({
 
   return (
     <motion.div
-      whileHover={hover ? { y: -8, scale: 1.02 } : {}}
+      whileHover={hover ? { y: -4, scale: 1.01 } : {}}
       onClick={onClick}
       className={`
-        relative rounded-2xl backdrop-blur-lg border
+        relative rounded-2xl backdrop-blur-xl border
         ${
           isDark
-            ? "bg-white/8 border-white/15 hover:border-cyan-500/60 hover:bg-white/12"
-            : "bg-white/15 border-white/30 hover:border-cyan-400/60 hover:bg-white/20"
+            ? "bg-slate-900/50 border-white/10 hover:border-teal-400/40 hover:bg-slate-900/70 shadow-[0_18px_50px_-30px_rgba(8,47,73,0.9)]"
+            : "bg-white/75 border-slate-200/70 hover:border-teal-500/40 hover:bg-white/90 shadow-[0_18px_50px_-34px_rgba(15,23,42,0.25)]"
         }
         transition-all duration-300 will-change-transform
         ${hover ? "cursor-pointer" : ""}
