@@ -32,11 +32,12 @@ export function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--border)] backdrop-blur-md bg-[var(--bg)]" style={{ opacity: 1 }}>
       <Container wide className="h-14 flex items-center justify-between">
         <button
           onClick={() => scrollTo("home")}
           className="font-mono text-sm font-medium text-[var(--accent)] hover:opacity-80 transition-opacity"
+          style={{ cursor: 'pointer' }}
         >
           saurav.nr
         </button>
@@ -48,6 +49,7 @@ export function Navigation() {
               key={link.id}
               onClick={() => scrollTo(link.id)}
               className="font-mono text-sm text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors"
+              style={{ cursor: 'pointer' }}
             >
               {link.label}
             </button>
@@ -55,6 +57,7 @@ export function Navigation() {
           <button
             onClick={toggleTheme}
             className="ml-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors"
+            style={{ cursor: 'pointer' }}
             aria-label="Toggle theme"
           >
             {isDark ? "sun" : "moon"}

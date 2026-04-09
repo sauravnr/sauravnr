@@ -37,6 +37,10 @@ html {
   box-sizing: border-box;
 }
 
+button, a, [role="button"] {
+  cursor: pointer !important;
+}
+
 body {
   background: var(--bg);
   color: var(--text);

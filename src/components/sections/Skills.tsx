@@ -27,7 +27,7 @@ const skillGroups = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-28 md:py-32 border-t border-[var(--border)]">
+    <section id="skills" style={{ paddingTop: '8rem', paddingBottom: '8rem', borderTop: '1px solid var(--border)' }}>
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,22 +35,23 @@ export function Skills() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-mono text-sm text-[var(--accent)] mb-10 flex items-center gap-3">
+          <h2 className="font-mono text-sm text-[var(--accent)] flex items-center gap-3" style={{ marginBottom: '3rem' }}>
             <span className="inline-block w-1 h-4 bg-[var(--accent)] rounded-full" />
             // skills
           </h2>
 
-          <div className="space-y-10">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
             {skillGroups.map((group) => (
               <div key={group.label}>
-                <h3 className="font-mono text-xs text-[var(--text-secondary)] mb-3 uppercase tracking-wider">
+                <h3 className="font-mono text-xs text-[var(--text-secondary)] uppercase tracking-wider" style={{ marginBottom: '1rem' }}>
                   {group.label}
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap" style={{ gap: '0.75rem' }}>
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="font-mono text-sm px-4 py-2 border border-[var(--border)] rounded text-[var(--text)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-default"
+                      className="font-mono text-sm border border-[var(--border)] rounded text-[var(--text)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+                      style={{ padding: '0.6rem 1.1rem', cursor: 'pointer' }}
                     >
                       {skill}
                     </span>

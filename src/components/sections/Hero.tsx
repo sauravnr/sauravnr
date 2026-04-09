@@ -55,20 +55,21 @@ export function Hero() {
               Full-Stack Developer focused on clean UX and reliable systems.
             </p>
 
-            <p className="text-sm text-[var(--text-secondary)] mb-12 leading-relaxed">
+            <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed" style={{ marginBottom: '3.5rem' }}>
               I build practical web and mobile apps that solve real-world
               problems. React, React Native, MERN stack — turning complex ideas
               into clean products people actually use.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap" style={{ gap: '1.25rem' }}>
               <button
                 onClick={() =>
                   document
                     .getElementById("projects")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="font-mono text-sm px-7 py-3 bg-[var(--accent)] text-[var(--bg)] rounded hover:opacity-90 transition-opacity font-medium"
+                className="font-mono font-medium hover:opacity-90 transition-opacity"
+                style={{ fontSize: '0.95rem', padding: '0.85rem 2rem', backgroundColor: 'var(--accent)', color: 'var(--bg)', borderRadius: '6px', cursor: 'pointer' }}
               >
                 view work
               </button>
@@ -78,7 +79,8 @@ export function Hero() {
                     .getElementById("contact")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="font-mono text-sm px-7 py-3 border border-[var(--border)] text-[var(--text-secondary)] rounded hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+                className="font-mono hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+                style={{ fontSize: '0.95rem', padding: '0.85rem 2rem', border: '1px solid var(--border)', color: 'var(--text-secondary)', borderRadius: '6px', cursor: 'pointer' }}
               >
                 get in touch
               </button>

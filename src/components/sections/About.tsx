@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 
 export function About() {
   return (
-    <section id="about" className="py-28 md:py-32 border-t border-[var(--border)]">
+    <section id="about" style={{ paddingTop: '8rem', paddingBottom: '8rem', borderTop: '1px solid var(--border)' }}>
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -15,16 +15,16 @@ export function About() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-mono text-sm text-[var(--accent)] mb-8 flex items-center gap-3">
+          <h2 className="font-mono text-sm text-[var(--accent)] flex items-center gap-3" style={{ marginBottom: '2.5rem' }}>
             <span className="inline-block w-1 h-4 bg-[var(--accent)] rounded-full" />
             // about
           </h2>
 
-          <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed mb-12 whitespace-pre-line">
+          <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed whitespace-pre-line" style={{ marginBottom: '3.5rem' }}>
             {BIO}
           </p>
 
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-16">
+          <div className="grid grid-cols-3" style={{ gap: '2rem', marginBottom: '4.5rem' }}>
             {[
               { value: "2+", label: "years exp" },
               { value: "5+", label: "projects" },
@@ -32,9 +32,10 @@ export function About() {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="text-center p-4 sm:p-6 border border-[var(--border)] rounded bg-[var(--surface)]"
+                className="text-center border border-[var(--border)] rounded bg-[var(--surface)]"
+                style={{ padding: '1.5rem' }}
               >
-                <div className="font-mono text-2xl sm:text-3xl font-bold text-[var(--accent)] mb-1">
+                <div className="font-mono font-bold text-[var(--accent)]" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>
                   {stat.value}
                 </div>
                 <div className="font-mono text-xs text-[var(--text-secondary)]">
@@ -49,7 +50,7 @@ export function About() {
             // journey
           </h3>
 
-          <div className="space-y-10">
+          <div className="space-y-10 mb-6">
             {TIMELINE.map((item) => (
               <div key={item.year} className="flex gap-6">
                 <span className="font-mono text-sm text-[var(--accent)] shrink-0 pt-0.5 w-12">

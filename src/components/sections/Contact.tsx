@@ -40,11 +40,21 @@ export function Contact() {
     }
   };
 
-  const inputClass =
-    "w-full px-4 py-3 bg-[var(--surface)] border border-[var(--border)] rounded font-mono text-sm text-[var(--text)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-colors";
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    padding: '0.85rem 1rem',
+    backgroundColor: 'var(--surface)',
+    border: '1px solid var(--border)',
+    borderRadius: '6px',
+    fontFamily: 'var(--font-code), monospace',
+    fontSize: '0.875rem',
+    color: 'var(--text)',
+    outline: 'none',
+    transition: 'border-color 0.2s',
+  };
 
   return (
-    <section id="contact" className="py-28 md:py-32 border-t border-[var(--border)]">
+    <section id="contact" style={{ paddingTop: '8rem', paddingBottom: '8rem', borderTop: '1px solid var(--border)' }}>
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,16 +62,16 @@ export function Contact() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-mono text-sm text-[var(--accent)] mb-4 flex items-center gap-3">
-            <span className="inline-block w-1 h-4 bg-[var(--accent)] rounded-full" />
+          <h2 className="font-mono text-sm text-[var(--accent)] flex items-center" style={{ gap: '0.75rem', marginBottom: '0.75rem' }}>
+            <span style={{ display: 'inline-block', width: '4px', height: '16px', backgroundColor: 'var(--accent)', borderRadius: '9999px' }} />
             // contact
           </h2>
-          <p className="text-[var(--text-secondary)] mb-10">
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem', fontSize: '1rem' }}>
             Have a project in mind? Let&apos;s talk.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-10 md:gap-16">
-            <form onSubmit={handleSubmit} className="space-y-5">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }} className="md:grid-cols-2">
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <input
                 type="text"
                 name="name"
@@ -69,7 +79,9 @@ export function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="name"
-                className={inputClass}
+                style={inputStyle}
+                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--accent)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
               />
               <input
                 type="email"
@@ -78,38 +90,45 @@ export function Contact() {
                 onChange={handleChange}
                 required
                 placeholder="email"
-                className={inputClass}
+                style={inputStyle}
+                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--accent)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
               />
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 required
-                rows={5}
+                rows={6}
                 placeholder="message"
-                className={inputClass + " resize-none"}
+                style={{ ...inputStyle, resize: 'none' }}
+                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--accent)'}
+                onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
               />
-              <button
-                type="submit"
-                disabled={status === "loading" || status === "sent"}
-                className="font-mono text-sm px-6 py-3 bg-[var(--accent)] text-[var(--bg)] rounded hover:opacity-90 transition-opacity disabled:opacity-50"
-              >
-                {status === "loading"
-                  ? "sending..."
-                  : status === "sent"
-                    ? "sent ✓"
-                    : status === "error"
-                      ? "failed — retry"
-                      : "send message"}
-              </button>
+              <div style={{ marginTop: '0.5rem' }}>
+                <button
+                  type="submit"
+                  disabled={status === "loading" || status === "sent"}
+                  className="font-mono hover:opacity-90 transition-opacity"
+                  style={{ padding: '0.85rem 2.5rem', backgroundColor: 'var(--accent)', color: 'var(--bg)', borderRadius: '6px', fontSize: '0.875rem', border: 'none', cursor: 'pointer', opacity: (status === 'loading' || status === 'sent') ? 0.5 : 1 }}
+                >
+                  {status === "loading"
+                    ? "sending..."
+                    : status === "sent"
+                      ? "sent \u2713"
+                      : status === "error"
+                        ? "failed \u2014 retry"
+                        : "send message"}
+                </button>
+              </div>
             </form>
 
-            <div className="space-y-8">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               <div>
-                <h3 className="font-mono text-xs text-[var(--text-secondary)] uppercase tracking-wider mb-3">
+                <h3 className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem' }}>
                   links
                 </h3>
-                <div className="space-y-2">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                   {[
                     { label: "github", url: SOCIAL_LINKS.github },
                     { label: "linkedin", url: SOCIAL_LINKS.linkedin },
@@ -124,7 +143,8 @@ export function Contact() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block font-mono text-sm text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
+                      className="font-mono hover:text-[var(--accent)] transition-colors"
+                      style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', cursor: 'pointer', textDecoration: 'none' }}
                     >
                       → {link.label}
                     </a>
@@ -132,26 +152,27 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="p-4 border border-[var(--border)] rounded">
-                <p className="font-mono text-xs text-[var(--text-secondary)] mb-2">
+              <div style={{ padding: '1.25rem', border: '1px solid var(--border)', borderRadius: '6px' }}>
+                <p className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', marginBottom: '0.6rem' }}>
                   status
                 </p>
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[var(--accent)]" />
-                  <span className="font-mono text-sm text-[var(--text)]">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <span style={{ height: '8px', width: '8px', borderRadius: '50%', backgroundColor: 'var(--accent)' }} />
+                  <span className="font-mono" style={{ fontSize: '0.875rem', color: 'var(--text)' }}>
                     available for work
                   </span>
                 </div>
               </div>
 
-              <div className="p-4 border border-[var(--border)] rounded">
-                <p className="font-mono text-xs text-[var(--text-secondary)] mb-2">
+              <div style={{ padding: '1.25rem', border: '1px solid var(--border)', borderRadius: '6px' }}>
+                <p className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', marginBottom: '0.6rem' }}>
                   resume
                 </p>
                 <a
                   href="/resume.pdf"
                   download
-                  className="font-mono text-sm text-[var(--text)] hover:text-[var(--accent)] transition-colors"
+                  className="font-mono hover:text-[var(--accent)] transition-colors"
+                  style={{ fontSize: '0.875rem', color: 'var(--text)', cursor: 'pointer', textDecoration: 'none' }}
                 >
                   ↓ download cv
                 </a>
