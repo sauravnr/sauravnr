@@ -1,9 +1,56 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { PROJECTS } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
+
+function ImageGallery({ images, title }: { images: string[]; title: string }) {
+  const [active, setActive] = useState(0);
+  if (!images || images.length === 0) return null;
+  return (
+    <div style={{ marginBottom: '1.5rem' }}>
+      <div style={{ position: 'relative', borderRadius: '6px', overflow: 'hidden', border: '1px solid var(--border)', backgroundColor: 'var(--surface)' }}>
+        <img
+          src={images[active]}
+          alt={`${title} screenshot ${active + 1}`}
+          style={{ width: '100%', display: 'block', maxHeight: '320px', objectFit: 'cover' }}
+        />
+        {images.length > 1 && (
+          <div style={{ position: 'absolute', bottom: '0.75rem', right: '0.75rem', display: 'flex', gap: '0.4rem' }}>
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActive(i)}
+                style={{
+                  width: '8px', height: '8px', borderRadius: '50%', border: 'none',
+                  backgroundColor: i === active ? 'var(--accent)' : 'rgba(255,255,255,0.4)',
+                  cursor: 'pointer', padding: 0,
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      {images.length > 1 && (
+        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
+          {images.map((img, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              style={{
+                flex: 1, padding: 0, border: `1px solid ${i === active ? 'var(--accent)' : 'var(--border)'}`,
+                borderRadius: '4px', overflow: 'hidden', cursor: 'pointer', backgroundColor: 'transparent',
+              }}
+            >
+              <img src={img} alt={`thumb ${i + 1}`} style={{ width: '100%', height: '48px', objectFit: 'cover', display: 'block' }} />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function Projects() {
   return (
@@ -76,6 +123,8 @@ export function Projects() {
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', marginBottom: '1.25rem', lineHeight: '1.65' }}>
                   {project.description}
                 </p>
+
+                <ImageGallery images={project.images ?? []} title={project.title} />
 
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   {project.technologies.map((tech) => (

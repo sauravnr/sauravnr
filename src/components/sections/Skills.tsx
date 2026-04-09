@@ -17,11 +17,11 @@ const skillGroups = [
   },
   {
     label: "backend",
-    skills: ["Node.js", "Express", "MongoDB"],
+    skills: ["Node.js", "Express", "MongoDB", "PHP", "Laravel", "MySQL"],
   },
   {
     label: "tools & practices",
-    skills: ["API Integration", "UI/UX Design", "Git", "REST APIs"],
+    skills: ["Socket.IO", "REST APIs", "Git", "API Integration", "UI/UX Design"],
   },
 ];
 
