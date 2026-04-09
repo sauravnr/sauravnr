@@ -60,7 +60,7 @@ export function Navigation() {
             style={{ cursor: 'pointer' }}
             aria-label="Toggle theme"
           >
-            {isDark ? "sun" : "moon"}
+            {isDark ? "☀️" : "🌙"}
           </button>
         </div>
 
@@ -71,7 +71,7 @@ export function Navigation() {
             className="text-sm text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors"
             aria-label="Toggle theme"
           >
-            {isDark ? "sun" : "moon"}
+            {isDark ? "☀️" : "🌙"}
           </button>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
