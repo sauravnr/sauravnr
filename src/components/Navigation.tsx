@@ -36,10 +36,10 @@ export function Navigation() {
       <Container wide className="h-14 flex items-center justify-between">
         <button
           onClick={() => scrollTo("home")}
-          className="font-mono text-sm font-medium text-[var(--accent)] hover:opacity-80 transition-opacity"
-          style={{ cursor: 'pointer' }}
+          className="font-mono text-sm font-medium hover:opacity-80 transition-opacity"
+          style={{ cursor: 'pointer', color: 'var(--text)' }}
         >
-          saurav.nr
+          saurav<span style={{ color: 'var(--accent)' }}>.</span>nr
         </button>
 
         {/* Desktop */}

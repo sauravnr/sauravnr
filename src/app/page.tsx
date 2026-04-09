@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState, useCallback } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -6,10 +8,19 @@ import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { Container } from "@/components/ui/Container";
+import { Loader } from "@/components/ui/Loader";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+  const handleComplete = useCallback(() => setLoading(false), []);
+
   return (
-    <main className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+    <>
+      {loading && <Loader onComplete={handleComplete} />}
+      <main
+        className="min-h-screen bg-[var(--bg)] text-[var(--text)]"
+        style={{ visibility: loading ? "hidden" : "visible" }}
+      >
       <Navigation />
       <Hero />
       <About />
@@ -23,6 +34,7 @@ export default function Home() {
           </p>
         </Container>
       </footer>
-    </main>
+      </main>
+    </>
   );
 }

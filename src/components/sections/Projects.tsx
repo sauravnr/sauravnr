@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { PROJECTS } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
@@ -17,6 +17,7 @@ function Lightbox({
   onClose: () => void;
 }) {
   const [active, setActive] = useState(startIndex);
+  const touchStartX = useRef<number | null>(null);
 
   const prev = useCallback(() => setActive((i) => (i - 1 + images.length) % images.length), [images.length]);
   const next = useCallback(() => setActive((i) => (i + 1) % images.length), [images.length]);
@@ -35,6 +36,19 @@ function Lightbox({
     };
   }, [onClose, prev, next]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) next();
+      else prev();
+    }
+    touchStartX.current = null;
+  };
+
   return (
     <div
       onClick={onClose}
@@ -45,6 +59,7 @@ function Lightbox({
         alignItems: "center", justifyContent: "center",
       }}
     >
+      {/* header */}
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
@@ -54,27 +69,30 @@ function Lightbox({
         }}
       >
         <span className="font-mono" style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.5)" }}>
-          {title}  {active + 1} / {images.length}
+          {title} &mdash; {active + 1} / {images.length}
         </span>
         <button
           onClick={onClose}
           style={{
             background: "none", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "4px",
             color: "rgba(255,255,255,0.7)", cursor: "pointer",
-            padding: "0.25rem 0.6rem", fontSize: "1rem", lineHeight: 1,
+            padding: "0.25rem 0.6rem", fontSize: "0.8rem", lineHeight: 1, fontFamily: "var(--font-code)",
           }}
         >
-          
+          ESC
         </button>
       </div>
 
+      {/* image + swipe area */}
       <div
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         style={{ position: "relative", maxWidth: "min(900px, 92vw)", width: "100%" }}
       >
         <img
           src={images[active]}
-          alt={`${title} screenshot ${active + 1}`}
+          alt={"" + title + " screenshot " + (active + 1)}
           style={{
             width: "100%", display: "block", maxHeight: "78vh",
             objectFit: "contain", borderRadius: "6px",
@@ -85,30 +103,35 @@ function Lightbox({
           <>
             <button
               onClick={prev}
+              aria-label="Previous"
               style={{
-                position: "absolute", left: "-3rem", top: "50%", transform: "translateY(-50%)",
-                background: "none", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "4px",
-                color: "rgba(255,255,255,0.8)", cursor: "pointer", padding: "0.5rem 0.75rem",
-                fontSize: "1rem",
+                position: "absolute", left: "0.75rem", top: "50%", transform: "translateY(-50%)",
+                background: "rgba(0,0,0,0.5)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "50%",
+                color: "#fff", cursor: "pointer", width: "40px", height: "40px",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "0.9rem", fontFamily: "var(--font-code)",
               }}
             >
-              
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
             </button>
             <button
               onClick={next}
+              aria-label="Next"
               style={{
-                position: "absolute", right: "-3rem", top: "50%", transform: "translateY(-50%)",
-                background: "none", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "4px",
-                color: "rgba(255,255,255,0.8)", cursor: "pointer", padding: "0.5rem 0.75rem",
-                fontSize: "1rem",
+                position: "absolute", right: "0.75rem", top: "50%", transform: "translateY(-50%)",
+                background: "rgba(0,0,0,0.5)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "50%",
+                color: "#fff", cursor: "pointer", width: "40px", height: "40px",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: "0.9rem", fontFamily: "var(--font-code)",
               }}
             >
-              
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
             </button>
           </>
         )}
       </div>
 
+      {/* dots */}
       {images.length > 1 && (
         <div
           onClick={(e) => e.stopPropagation()}
@@ -184,7 +207,7 @@ export function Projects() {
                         className="font-mono hover:text-[var(--accent)] transition-colors"
                         style={{ fontSize: "0.7rem", color: "var(--text-secondary)", textDecoration: "none" }}
                       >
-                        github 
+                        github &#8599;
                       </a>
                     )}
                     {project.demo && (
@@ -192,8 +215,17 @@ export function Projects() {
                         className="font-mono hover:text-[var(--accent)] transition-colors"
                         style={{ fontSize: "0.7rem", color: "var(--accent)", textDecoration: "none" }}
                       >
-                        {project.demo.includes("play.google.com") ? "play store " : "live "}
+                        {project.demo.includes("play.google.com") ? "play store &#8599;" : "live &#8599;"}
                       </a>
+                    )}
+                    {project.images && project.images.length > 0 && (
+                      <button
+                        onClick={() => setLightbox({ images: project.images, title: project.title })}
+                        className="font-mono hover:text-[var(--accent)] transition-colors"
+                        style={{ fontSize: "0.7rem", color: "var(--text-secondary)", textDecoration: "none", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                      >
+                        preview &#8599;
+                      </button>
                     )}
                     <span className="font-mono" style={{ fontSize: "0.7rem", color: "var(--text-secondary)" }}>
                       {String(index + 1).padStart(2, "0")}
@@ -205,41 +237,16 @@ export function Projects() {
                   {project.description}
                 </p>
 
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "1rem", flexWrap: "wrap" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="font-mono"
-                        style={{ fontSize: "0.7rem", padding: "0.3rem 0.65rem", backgroundColor: "var(--surface)", border: "1px solid var(--border)", borderRadius: "4px", color: "var(--text-secondary)" }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  {project.images && project.images.length > 0 && (
-                    <button
-                      onClick={() => setLightbox({ images: project.images, title: project.title })}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
                       className="font-mono"
-                      style={{
-                        fontSize: "0.7rem", padding: "0.3rem 0.75rem",
-                        border: "1px solid var(--border)", borderRadius: "4px",
-                        backgroundColor: "transparent", color: "var(--text-secondary)",
-                        cursor: "pointer", whiteSpace: "nowrap",
-                        transition: "border-color 0.2s, color 0.2s",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = "var(--accent)";
-                        e.currentTarget.style.color = "var(--accent)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "var(--border)";
-                        e.currentTarget.style.color = "var(--text-secondary)";
-                      }}
+                      style={{ fontSize: "0.7rem", padding: "0.3rem 0.65rem", backgroundColor: "var(--surface)", border: "1px solid var(--border)", borderRadius: "4px", color: "var(--text-secondary)" }}
                     >
-                      screenshots [{project.images.length}]
-                    </button>
-                  )}
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
