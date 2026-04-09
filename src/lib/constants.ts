@@ -5,11 +5,11 @@ export const PROJECTS = [
     title: "My IPO App",
     description:
       "A comprehensive utility app for Nepalese stock market investors to manage multiple Meroshare accounts, apply for IPOs in bulk, check IPO results, track portfolios, and access financial tools — all from a single mobile app.",
-    technologies: ["React Native", "Expo", "React", "TypeScript", "Hermes"],
+    technologies: ["React Native", "Expo", "React", "TypeScript"],
     images: [],
     github: "",
-    demo: "", // add Play Store URL here once verified
-    status: "in-progress",
+    demo: "https://play.google.com/store/apps",
+    status: "live",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const PROJECTS = [
     description:
       "An online blood management platform where donors can register and provide details to help people searching for blood. Built as a college project using PHP and MySQL.",
     technologies: ["PHP", "MySQL", "HTML5", "CSS", "JavaScript"],
-    images: [],
+    images: ["/projects/blood-nation1.png", "/projects/blood-nation2.png", "/projects/blood-nation3.png"],
     github: "",
     demo: "",
     status: "screenshot",
@@ -39,7 +39,7 @@ export const PROJECTS = [
     description:
       "A web-based dairy farm management system to replace traditional pen-and-paper record keeping. Manages cow records, staff & salary, pregnancy & vaccine monitoring, milk and cow sales.",
     technologies: ["React", "Laravel", "MySQL"],
-    images: [],
+    images: ["/projects/e-dairy1.png", "/projects/e-dairy2.png", "/projects/e-dairy3.png"],
     github: "",
     demo: "",
     status: "screenshot",
