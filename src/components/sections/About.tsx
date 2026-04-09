@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 
 export function About() {
   return (
-    <section id="about" className="py-24 border-t border-[var(--border)]">
+    <section id="about" className="py-28 md:py-32 border-t border-[var(--border)]">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,7 +24,7 @@ export function About() {
             {BIO}
           </p>
 
-          <div className="grid grid-cols-3 gap-4 sm:gap-6 mb-16 max-w-sm">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-16">
             {[
               { value: "2+", label: "years exp" },
               { value: "5+", label: "projects" },
@@ -49,7 +49,7 @@ export function About() {
             // journey
           </h3>
 
-          <div className="space-y-8">
+          <div className="space-y-10">
             {TIMELINE.map((item) => (
               <div key={item.year} className="flex gap-6">
                 <span className="font-mono text-sm text-[var(--accent)] shrink-0 pt-0.5 w-12">

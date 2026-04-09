@@ -27,7 +27,7 @@ const skillGroups = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 border-t border-[var(--border)]">
+    <section id="skills" className="py-28 md:py-32 border-t border-[var(--border)]">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ export function Skills() {
             // skills
           </h2>
 
-          <div className="space-y-8">
+          <div className="space-y-10">
             {skillGroups.map((group) => (
               <div key={group.label}>
                 <h3 className="font-mono text-xs text-[var(--text-secondary)] mb-3 uppercase tracking-wider">
@@ -50,7 +50,7 @@ export function Skills() {
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="font-mono text-sm px-3 py-1.5 border border-[var(--border)] rounded text-[var(--text)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-default"
+                      className="font-mono text-sm px-4 py-2 border border-[var(--border)] rounded text-[var(--text)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-default"
                     >
                       {skill}
                     </span>

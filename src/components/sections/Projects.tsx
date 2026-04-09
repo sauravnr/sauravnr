@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 border-t border-[var(--border)]">
+    <section id="projects" className="py-28 md:py-32 border-t border-[var(--border)]">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,11 +20,11 @@ export function Projects() {
             // projects
           </h2>
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             {PROJECTS.map((project, index) => (
               <div
                 key={project.id}
-                className="group p-6 border border-[var(--border)] rounded hover:border-[var(--accent)] transition-colors"
+                className="group p-7 sm:p-8 border border-[var(--border)] rounded hover:border-[var(--accent)] transition-colors"
               >
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-lg font-medium text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">

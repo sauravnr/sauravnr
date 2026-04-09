@@ -55,20 +55,20 @@ export function Hero() {
               Full-Stack Developer focused on clean UX and reliable systems.
             </p>
 
-            <p className="text-sm text-[var(--text-secondary)] mb-10 leading-relaxed">
+            <p className="text-sm text-[var(--text-secondary)] mb-12 leading-relaxed">
               I build practical web and mobile apps that solve real-world
               problems. React, React Native, MERN stack — turning complex ideas
               into clean products people actually use.
             </p>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-4">
               <button
                 onClick={() =>
                   document
                     .getElementById("projects")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="font-mono text-sm px-5 py-2.5 bg-[var(--accent)] text-[var(--bg)] rounded hover:opacity-90 transition-opacity font-medium"
+                className="font-mono text-sm px-7 py-3 bg-[var(--accent)] text-[var(--bg)] rounded hover:opacity-90 transition-opacity font-medium"
               >
                 view work
               </button>
@@ -78,7 +78,7 @@ export function Hero() {
                     .getElementById("contact")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="font-mono text-sm px-5 py-2.5 border border-[var(--border)] text-[var(--text-secondary)] rounded hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+                className="font-mono text-sm px-7 py-3 border border-[var(--border)] text-[var(--text-secondary)] rounded hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
               >
                 get in touch
               </button>

@@ -44,7 +44,7 @@ export function Contact() {
     "w-full px-4 py-3 bg-[var(--surface)] border border-[var(--border)] rounded font-mono text-sm text-[var(--text)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-colors";
 
   return (
-    <section id="contact" className="py-24 border-t border-[var(--border)]">
+    <section id="contact" className="py-28 md:py-32 border-t border-[var(--border)]">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

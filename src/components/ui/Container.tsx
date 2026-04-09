@@ -11,7 +11,7 @@ export function Container({ children, wide, className = "" }: ContainerProps) {
     <div
       style={{
         width: "100%",
-        maxWidth: wide ? "1080px" : "720px",
+        maxWidth: wide ? "1100px" : "820px",
         marginLeft: "auto",
         marginRight: "auto",
         paddingLeft: "clamp(1.5rem, 6vw, 4rem)",
