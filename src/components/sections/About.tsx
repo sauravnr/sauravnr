@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 
 export function About() {
   return (
-    <section id="about" style={{ paddingTop: '8rem', paddingBottom: '8rem', borderTop: '1px solid var(--border)' }}>
+    <section id="about" style={{ paddingTop: '6rem', paddingBottom: '6rem', borderTop: '1px solid var(--border)' }}>
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,19 +45,19 @@ export function About() {
             ))}
           </div>
 
-          <h3 className="font-mono text-sm text-[var(--accent)] mb-6 flex items-center gap-3">
+          <h3 className="font-mono text-sm text-[var(--accent)]" style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <span className="inline-block w-1 h-4 bg-[var(--accent)] rounded-full" />
             // journey
           </h3>
 
-          <div className="space-y-10 mb-6">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
             {TIMELINE.map((item) => (
-              <div key={item.year} className="flex gap-6">
-                <span className="font-mono text-sm text-[var(--accent)] shrink-0 pt-0.5 w-12">
+              <div key={item.year} style={{ display: 'flex', gap: '1.5rem' }}>
+                <span className="font-mono text-sm text-[var(--accent)]" style={{ flexShrink: 0, paddingTop: '2px', width: '3rem' }}>
                   {item.year}
                 </span>
-                <div className="border-l border-[var(--border)] pl-6">
-                  <h4 className="font-medium text-[var(--text)] mb-1">
+                <div style={{ borderLeft: '1px solid var(--border)', paddingLeft: '1.5rem' }}>
+                  <h4 className="font-medium text-[var(--text)]" style={{ marginBottom: '0.35rem' }}>
                     {item.title}
                   </h4>
                   <p className="text-sm text-[var(--text-secondary)] leading-relaxed">

@@ -27,7 +27,7 @@ const skillGroups = [
 
 export function Skills() {
   return (
-    <section id="skills" style={{ paddingTop: '8rem', paddingBottom: '8rem', borderTop: '1px solid var(--border)' }}>
+    <section id="skills" style={{ paddingTop: '6rem', paddingBottom: '6rem', borderTop: '1px solid var(--border)' }}>
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

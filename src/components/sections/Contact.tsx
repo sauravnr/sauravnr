@@ -54,7 +54,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" style={{ paddingTop: '8rem', paddingBottom: '8rem', borderTop: '1px solid var(--border)' }}>
+    <section id="contact" style={{ paddingTop: '6rem', paddingBottom: '6rem', borderTop: '1px solid var(--border)' }}>
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -70,7 +70,7 @@ export function Contact() {
             Have a project in mind? Let&apos;s talk.
           </p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }} className="md:grid-cols-2">
+          <div className="contact-grid">
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <input
                 type="text"
