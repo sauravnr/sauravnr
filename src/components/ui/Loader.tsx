@@ -51,7 +51,7 @@ export function Loader({ onComplete }: { onComplete: () => void }) {
             letterSpacing: "0.05em",
           }}
         >
-          saurav.nr
+          sauravniraula.com.np
         </div>
         <div
           style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}
