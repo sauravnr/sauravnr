@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Container } from "@/components/ui/Container";
 
 const codeLines = [
   { indent: 0, text: "const developer = {", color: "text-[var(--text)]" },
@@ -33,7 +34,7 @@ const codeLines = [
 export function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center pt-14">
-      <div className="wrap-wide py-20">
+      <Container wide className="py-20">
         <div className="grid lg:grid-cols-[1fr_1fr] gap-12 xl:gap-16 items-center">
           {/* Left — text */}
           <motion.div
@@ -122,7 +123,7 @@ export function Hero() {
             </div>
           </motion.div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

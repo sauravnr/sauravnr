@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Container } from "@/components/ui/Container";
 
 const skillGroups = [
   {
@@ -27,7 +28,7 @@ const skillGroups = [
 export function Skills() {
   return (
     <section id="skills" className="py-24 border-t border-[var(--border)]">
-      <div className="wrap">
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +60,7 @@ export function Skills() {
             ))}
           </div>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }

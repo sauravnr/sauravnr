@@ -3,11 +3,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { PROJECTS } from "@/lib/constants";
+import { Container } from "@/components/ui/Container";
 
 export function Projects() {
   return (
     <section id="projects" className="py-24 border-t border-[var(--border)]">
-      <div className="wrap">
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +53,7 @@ export function Projects() {
             ))}
           </div>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useTheme } from "@/lib/theme-context";
+import { Container } from "@/components/ui/Container";
 
 const navLinks = [
   { id: "about", label: "about" },
@@ -32,7 +33,7 @@ export function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur-md">
-      <div className="wrap-wide h-14 flex items-center justify-between">
+      <Container wide className="h-14 flex items-center justify-between">
         <button
           onClick={() => scrollTo("home")}
           className="font-mono text-sm font-medium text-[var(--accent)] hover:opacity-80 transition-opacity"
@@ -77,12 +78,12 @@ export function Navigation() {
             {menuOpen ? "[close]" : "[menu]"}
           </button>
         </div>
-      </div>
+      </Container>
 
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-[var(--border)] bg-[var(--bg)]">
-          <div className="wrap-wide py-4 flex flex-col gap-3">
+          <Container wide className="py-4 flex flex-col gap-3">
             {navLinks.map((link) => (
               <button
                 key={link.id}
@@ -92,7 +93,7 @@ export function Navigation() {
                 → {link.label}
               </button>
             ))}
-          </div>
+          </Container>
         </div>
       )}
     </nav>

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { SOCIAL_LINKS } from "@/lib/constants";
+import { Container } from "@/components/ui/Container";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -44,7 +45,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 border-t border-[var(--border)]">
-      <div className="wrap">
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -158,7 +159,7 @@ export function Contact() {
             </div>
           </div>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }

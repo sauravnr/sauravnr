@@ -5,6 +5,7 @@ import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
+import { Container } from "@/components/ui/Container";
 
 export default function Home() {
   return (
@@ -16,11 +17,11 @@ export default function Home() {
       <Projects />
       <Contact />
       <footer className="border-t border-[var(--border)] py-8">
-        <div className="wrap-wide text-center">
+        <Container wide className="text-center">
           <p className="font-mono text-xs text-[var(--text-secondary)]">
             &copy; {new Date().getFullYear()} Saurav Niraula
           </p>
-        </div>
+        </Container>
       </footer>
     </main>
   );
