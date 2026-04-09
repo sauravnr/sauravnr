@@ -1,25 +1,22 @@
 import type { Metadata } from "next";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
 import { ThemeProvider } from "@/lib/theme-context";
 
-const bodyFont = Manrope({
+const inter = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
 });
 
-const displayFont = Space_Grotesk({
-  variable: "--font-display",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-code",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Saurav Niraula - Full-Stack Developer",
+  title: "Saurav Niraula — Full-Stack Developer",
   description:
-    "Portfolio of Saurav Niraula, a full-stack developer specializing in React, React Native, and MERN stack applications.",
+    "Full-stack developer specializing in React, React Native, and MERN stack applications.",
 };
 
 export default function RootLayout({
@@ -28,9 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${bodyFont.variable} ${displayFont.variable} antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

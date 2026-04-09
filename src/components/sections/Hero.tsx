@@ -2,161 +2,127 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
-import { useTheme } from "@/lib/theme-context";
+
+const codeLines = [
+  { indent: 0, text: "const developer = {", color: "text-[var(--text)]" },
+  {
+    indent: 1,
+    text: 'name: "Saurav Niraula",',
+    color: "text-[var(--text-secondary)]",
+  },
+  {
+    indent: 1,
+    text: 'role: "Full-Stack Dev",',
+    color: "text-[var(--text-secondary)]",
+  },
+  { indent: 1, text: "stack: [", color: "text-[var(--text-secondary)]" },
+  { indent: 2, text: '"React",', color: "text-[var(--accent)]" },
+  { indent: 2, text: '"React Native",', color: "text-[var(--accent)]" },
+  { indent: 2, text: '"Node.js",', color: "text-[var(--accent)]" },
+  { indent: 2, text: '"MongoDB",', color: "text-[var(--accent)]" },
+  { indent: 1, text: "],", color: "text-[var(--text-secondary)]" },
+  {
+    indent: 1,
+    text: 'location: "Nepal",',
+    color: "text-[var(--text-secondary)]",
+  },
+  { indent: 1, text: 'status: "available",', color: "text-[var(--accent)]" },
+  { indent: 0, text: "}", color: "text-[var(--text)]" },
+];
 
 export function Hero() {
-  const { isDark } = useTheme();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  };
-
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-36 pb-24"
-    >
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity }}
-          className={`absolute w-80 h-80 rounded-full opacity-20 mix-blend-screen left-1/2 -translate-x-1/2
-            ${isDark ? "bg-teal-400" : "bg-teal-300"}
-          `}
-          style={{ top: "-15%" }}
-        />
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity }}
-          className={`absolute w-[24rem] h-[24rem] rounded-full opacity-[0.04] blur-3xl mix-blend-screen left-1/2 -translate-x-1/2
-            ${isDark ? "bg-amber-300" : "bg-amber-200"}
-          `}
-          style={{ bottom: "-35%" }}
-        />
-      </div>
-
-      <motion.div
-        className="relative z-10 mx-auto w-full max-w-2xl px-6 sm:px-8 lg:px-10 text-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.div
-          variants={itemVariants}
-          className={`mx-auto inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full border mb-5 text-sm md:text-base shadow-sm
-            ${isDark ? "border-white/10 bg-white/5 text-slate-200" : "border-slate-200 bg-white/70 text-slate-700"}
-          `}
-        >
-          <span className="h-2 w-2 rounded-full bg-teal-400 animate-pulse" />
-          <span className="text-sm font-medium">Available for new projects</span>
-        </motion.div>
-
-        <motion.h1
-          variants={itemVariants}
-          className={`text-5xl md:text-7xl lg:text-8xl font-semibold mb-6 tracking-tight bg-clip-text text-transparent
-            ${
-              isDark
-                ? "bg-gradient-to-r from-teal-200 via-cyan-300 to-sky-300"
-                : "bg-gradient-to-r from-teal-600 via-cyan-600 to-sky-700"
-            }
-          `}
-        >
-          Saurav Niraula
-        </motion.h1>
-
-        <motion.p
-          variants={itemVariants}
-          className={`text-xl md:text-2xl mb-6 font-medium
-            ${isDark ? "text-slate-200" : "text-slate-700"}
-          `}
-        >
-          Full-Stack Developer focused on clean UX and reliable systems.
-        </motion.p>
-
-        <motion.p
-          variants={itemVariants}
-          className={`text-lg mx-auto mb-12 leading-relaxed max-w-[60ch]
-            ${isDark ? "text-slate-300" : "text-slate-600"}
-          `}
-        >
-          I build practical web and mobile applications that solve real-world
-          problems. With a strong focus on React and React Native, I turn
-          complex ideas into clean, usable products that people enjoy using.
-        </motion.p>
-
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center !mt-10"
-        >
-          <Button
-            variant="primary"
-            size="xl"
-            className="min-w-[240px] font-semibold !px-12 !h-14"
-            onClick={() =>
-              document.getElementById("projects")?.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-          >
-            View My Work
-          </Button>
-          <Button
-            variant="outline"
-            size="xl"
-            className="min-w-[240px] font-semibold !px-12 !h-14"
-            onClick={() =>
-              document.getElementById("contact")?.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-          >
-            Get In Touch
-          </Button>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div
-          className={`w-6 h-10 border-2 rounded-full flex justify-center
-          ${isDark ? "border-cyan-400" : "border-cyan-300"}
-        `}
-        >
+    <section id="home" className="min-h-screen flex items-center pt-14">
+      <div className="wrap-wide py-20">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-12 xl:gap-16 items-center">
+          {/* Left — text */}
           <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className={`w-1 h-2 rounded-full mt-2
-              ${isDark ? "bg-cyan-400" : "bg-cyan-300"}
-            `}
-          />
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="font-mono text-sm text-[var(--accent)] mb-5">
+              hi, i&apos;m
+            </p>
+
+            <h1 className="font-mono text-[2.25rem] sm:text-5xl lg:text-[3.5rem] font-bold text-[var(--text)] mb-4 tracking-tight leading-[1.1]">
+              Saurav Niraula
+              <span className="text-[var(--accent)] cursor-blink">_</span>
+            </h1>
+
+            <p className="text-lg md:text-xl text-[var(--text-secondary)] mb-5 leading-relaxed">
+              Full-Stack Developer focused on clean UX and reliable systems.
+            </p>
+
+            <p className="text-sm text-[var(--text-secondary)] mb-10 leading-relaxed">
+              I build practical web and mobile apps that solve real-world
+              problems. React, React Native, MERN stack — turning complex ideas
+              into clean products people actually use.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("projects")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="font-mono text-sm px-5 py-2.5 bg-[var(--accent)] text-[var(--bg)] rounded hover:opacity-90 transition-opacity font-medium"
+              >
+                view work
+              </button>
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="font-mono text-sm px-5 py-2.5 border border-[var(--border)] text-[var(--text-secondary)] rounded hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
+              >
+                get in touch
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Right — code block */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="hidden lg:block"
+          >
+            <div className="border border-[var(--border)] rounded-lg overflow-hidden bg-[var(--surface)]">
+              {/* window chrome */}
+              <div className="flex items-center gap-1.5 px-4 py-3 border-b border-[var(--border)] bg-[var(--bg)]">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
+                <span className="font-mono text-xs text-[var(--text-secondary)] ml-3">
+                  developer.ts
+                </span>
+              </div>
+              {/* code */}
+              <div className="p-5">
+                <div className="font-mono text-xs sm:text-sm leading-7">
+                  {codeLines.map((line, i) => (
+                    <div key={i} className="flex">
+                      <span className="select-none text-[var(--border)] w-6 shrink-0 text-right mr-4">
+                        {i + 1}
+                      </span>
+                      <span
+                        className={line.color}
+                        style={{ paddingLeft: `${line.indent * 1.25}rem` }}
+                      >
+                        {line.text}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

@@ -2,281 +2,162 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { Button } from "@/components/ui/Button";
-import { useTheme } from "@/lib/theme-context";
 import { SOCIAL_LINKS } from "@/lib/constants";
 
 export function Contact() {
-  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">(
+    "idle",
+  );
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setError("");
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
-
+    setStatus("loading");
     try {
-      const response = await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send message");
-      }
-
-      setSubmitted(true);
+      if (!res.ok) throw new Error();
+      setStatus("sent");
       setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 3000);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to send message");
-    } finally {
-      setLoading(false);
+      setTimeout(() => setStatus("idle"), 3000);
+    } catch {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
     }
   };
 
-  const socialLinks = [
-    { name: "GitHub", icon: "GH", url: SOCIAL_LINKS.github },
-    { name: "LinkedIn", icon: "IN", url: SOCIAL_LINKS.linkedin },
-    { name: "Twitter", icon: "X", url: SOCIAL_LINKS.twitter },
-    { name: "Email", icon: "@", url: `mailto:${SOCIAL_LINKS.email}` },
-  ];
+  const inputClass =
+    "w-full px-4 py-3 bg-[var(--surface)] border border-[var(--border)] rounded font-mono text-sm text-[var(--text)] placeholder:text-[var(--text-secondary)] focus:outline-none focus:border-[var(--accent)] transition-colors";
 
   return (
-    <section
-      id="contact"
-      className="relative py-20 md:py-24 flex justify-center"
-    >
-      <div className="w-full max-w-5xl px-6 sm:px-8 lg:px-10">
-        <motion.h2
+    <section id="contact" className="py-24 border-t border-[var(--border)]">
+      <div className="wrap">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={`text-4xl md:text-5xl font-bold mb-12 text-center
-            ${isDark ? "text-white" : "text-gray-900"}
-          `}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
         >
-          Let's Work Together
-        </motion.h2>
+          <h2 className="font-mono text-sm text-[var(--accent)] mb-4 flex items-center gap-3">
+            <span className="inline-block w-1 h-4 bg-[var(--accent)] rounded-full" />
+            // contact
+          </h2>
+          <p className="text-[var(--text-secondary)] mb-10">
+            Have a project in mind? Let&apos;s talk.
+          </p>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <GlassCard className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label
-                    className={`block text-sm font-medium mb-2
-                    ${isDark ? "text-cyan-300" : "text-cyan-600"}
-                  `}
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className={`w-full px-4 py-3 rounded-lg backdrop-blur-lg
-                      ${
-                        isDark
-                          ? "bg-white/8 border-white/15 text-white placeholder-gray-400"
-                          : "bg-white/15 border-white/30 text-gray-900 placeholder-gray-600"
-                      }
-                      border transition-all duration-300
-                      focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30
-                    `}
-                    placeholder="John Doe"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    className={`block text-sm font-medium mb-2
-                    ${isDark ? "text-cyan-300" : "text-cyan-600"}
-                  `}
-                  >
-                    Your Email
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className={`w-full px-4 py-3 rounded-lg backdrop-blur-lg
-                      ${
-                        isDark
-                          ? "bg-white/8 border-white/15 text-white placeholder-gray-400"
-                          : "bg-white/15 border-white/30 text-gray-900 placeholder-gray-600"
-                      }
-                      border transition-all duration-300
-                      focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30
-                    `}
-                    placeholder="john@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    className={`block text-sm font-medium mb-2
-                    ${isDark ? "text-cyan-300" : "text-cyan-600"}
-                  `}
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className={`w-full px-4 py-3 rounded-lg backdrop-blur-lg
-                      ${
-                        isDark
-                          ? "bg-white/8 border-white/15 text-white placeholder-gray-400"
-                          : "bg-white/15 border-white/30 text-gray-900 placeholder-gray-600"
-                      }
-                      border transition-all duration-300
-                      focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30
-                      resize-none
-                    `}
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-
-                {error && (
-                  <div className="p-4 rounded-lg bg-red-500/20 border border-red-500/50">
-                    <p className="text-red-300 text-sm">{error}</p>
-                  </div>
-                )}
-
-                <motion.div
-                  animate={submitted ? { scale: 1 } : {}}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    className="w-full"
-                    type="submit"
-                    disabled={submitted || loading}
-                  >
-                    {submitted
-                      ? "Message sent"
-                      : loading
-                        ? "Sending..."
-                        : "Send Message"}
-                  </Button>
-                </motion.div>
-              </form>
-            </GlassCard>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <GlassCard className="p-8">
-              <h3
-                className={`text-xl font-bold mb-6
-                ${isDark ? "text-white" : "text-gray-900"}
-              `}
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="name"
+                className={inputClass}
+              />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="email"
+                className={inputClass}
+              />
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={5}
+                placeholder="message"
+                className={inputClass + " resize-none"}
+              />
+              <button
+                type="submit"
+                disabled={status === "loading" || status === "sent"}
+                className="font-mono text-sm px-6 py-3 bg-[var(--accent)] text-[var(--bg)] rounded hover:opacity-90 transition-opacity disabled:opacity-50"
               >
-                Connect With Me
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {socialLinks.map((link) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.url}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`p-4 rounded-lg text-center transition-all
-                      ${
-                        isDark
-                          ? "bg-white/5 hover:bg-cyan-500/20"
-                          : "bg-white/10 hover:bg-cyan-400/20"
-                      }
-                    `}
-                  >
-                    <div className="text-xl font-semibold mb-2">
-                      {link.icon}
-                    </div>
-                    <p
-                      className={`text-sm font-medium
-                      ${isDark ? "text-cyan-300" : "text-cyan-600"}
-                    `}
+                {status === "loading"
+                  ? "sending..."
+                  : status === "sent"
+                    ? "sent ✓"
+                    : status === "error"
+                      ? "failed — retry"
+                      : "send message"}
+              </button>
+            </form>
+
+            <div className="space-y-8">
+              <div>
+                <h3 className="font-mono text-xs text-[var(--text-secondary)] uppercase tracking-wider mb-3">
+                  links
+                </h3>
+                <div className="space-y-2">
+                  {[
+                    { label: "github", url: SOCIAL_LINKS.github },
+                    { label: "linkedin", url: SOCIAL_LINKS.linkedin },
+                    { label: "twitter", url: SOCIAL_LINKS.twitter },
+                    {
+                      label: "email",
+                      url: "mailto:" + SOCIAL_LINKS.email,
+                    },
+                  ].map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block font-mono text-sm text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
                     >
-                      {link.name}
-                    </p>
-                  </motion.a>
-                ))}
+                      → {link.label}
+                    </a>
+                  ))}
+                </div>
               </div>
-            </GlassCard>
 
-            <GlassCard className="p-8 bg-gradient-to-br from-purple-500/10 to-pink-500/10">
-              <h3
-                className={`text-xl font-bold mb-3
-                ${isDark ? "text-white" : "text-gray-900"}
-              `}
-              >
-                Get My Resume
-              </h3>
-              <p
-                className={`text-sm mb-6
-                ${isDark ? "text-gray-400" : "text-gray-600"}
-              `}
-              >
-                Download my CV to learn more about my experience and skills.
-              </p>
-              <motion.a
-                href="/resume.pdf"
-                download
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`inline-flex items-center px-6 py-3 rounded-lg
-                  ${
-                    isDark
-                      ? "bg-gradient-to-r from-purple-500 to-pink-600 hover:shadow-lg hover:shadow-purple-500/50"
-                      : "bg-gradient-to-r from-purple-400 to-pink-500 hover:shadow-lg hover:shadow-purple-400/50"
-                  }
-                  text-white font-semibold transition-all duration-300
-                `}
-              >
-                <span>CV</span>
-                <span className="ml-2">Download</span>
-              </motion.a>
-            </GlassCard>
-          </motion.div>
-        </div>
+              <div className="p-4 border border-[var(--border)] rounded">
+                <p className="font-mono text-xs text-[var(--text-secondary)] mb-2">
+                  status
+                </p>
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[var(--accent)]" />
+                  <span className="font-mono text-sm text-[var(--text)]">
+                    available for work
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-4 border border-[var(--border)] rounded">
+                <p className="font-mono text-xs text-[var(--text-secondary)] mb-2">
+                  resume
+                </p>
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="font-mono text-sm text-[var(--text)] hover:text-[var(--accent)] transition-colors"
+                >
+                  ↓ download cv
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

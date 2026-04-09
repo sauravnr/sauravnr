@@ -1,7 +1,5 @@
 import React from "react";
 import { Navigation } from "@/components/Navigation";
-import { AnimatedBackground } from "@/components/ui/AnimatedBackground";
-import { CursorFollower } from "@/components/ui/CursorFollower";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
@@ -10,22 +8,17 @@ import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[color:var(--page-bg)] text-[color:var(--page-fg)]">
-      <AnimatedBackground />
-      <CursorFollower />
+    <main className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
       <Navigation />
-
       <Hero />
       <About />
       <Skills />
       <Projects />
       <Contact />
-
-      <footer className="relative z-10 border-t border-[color:var(--panel-border)] py-10">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm sm:text-base text-[color:var(--muted)]">
-            (c) 2024 Saurav Niraula. Built with React, Next.js, Tailwind CSS,
-            and Framer Motion.
+      <footer className="border-t border-[var(--border)] py-8">
+        <div className="wrap-wide text-center">
+          <p className="font-mono text-xs text-[var(--text-secondary)]">
+            &copy; {new Date().getFullYear()} Saurav Niraula
           </p>
         </div>
       </footer>

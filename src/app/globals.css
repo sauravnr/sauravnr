@@ -2,37 +2,48 @@
 
 :root {
   color-scheme: light;
-  --page-bg: #f8fafc;
-  --page-fg: #0f172a;
-  --panel-bg: rgba(255, 255, 255, 0.75);
-  --panel-border: rgba(15, 23, 42, 0.12);
-  --accent: #14b8a6;
-  --accent-strong: #0ea5e9;
-  --accent-warm: #f59e0b;
-  --muted: #64748b;
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e4e4e7;
+  --text: #09090b;
+  --text-secondary: #71717a;
+  --accent: #16a34a;
+  --accent-muted: rgba(22, 163, 74, 0.1);
 }
 
 .dark {
   color-scheme: dark;
-  --page-bg: #0b1220;
-  --page-fg: #e2e8f0;
-  --panel-bg: rgba(15, 23, 42, 0.6);
-  --panel-border: rgba(148, 163, 184, 0.18);
-  --accent: #2dd4bf;
-  --accent-strong: #38bdf8;
-  --accent-warm: #fbbf24;
-  --muted: #94a3b8;
-}
-
-html {
-  scroll-behavior: smooth;
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-secondary: #8b949e;
+  --accent: #3fb950;
+  --accent-muted: rgba(63, 185, 80, 0.1);
 }
 
 @theme inline {
-  --color-background: var(--page-bg);
-  --color-foreground: var(--page-fg);
   --font-sans: var(--font-body);
-  --font-mono: var(--font-body);
+  --font-mono: var(--font-code);
+}
+
+/* Reusable centered container — auto-scales padding mobile → desktop */
+.wrap {
+  width: 100%;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 5vw, 3rem);
+  padding-right: clamp(1.25rem, 5vw, 3rem);
+}
+
+.wrap-wide {
+  width: 100%;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1.25rem, 5vw, 3rem);
+  padding-right: clamp(1.25rem, 5vw, 3rem);
 }
 
 * {
@@ -42,112 +53,33 @@ html {
 }
 
 body {
-  position: relative;
-  min-height: 100vh;
-  background: var(--page-bg);
-  color: var(--page-fg);
-  font-family: var(--font-body);
-  letter-spacing: -0.01em;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 section[id] {
-  scroll-margin-top: 96px;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    radial-gradient(
-      800px 400px at 8% -10%,
-      rgba(20, 184, 166, 0.18),
-      transparent 60%
-    ),
-    radial-gradient(
-      700px 500px at 92% 5%,
-      rgba(14, 165, 233, 0.2),
-      transparent 60%
-    ),
-    radial-gradient(
-      600px 480px at 80% 100%,
-      rgba(245, 158, 11, 0.16),
-      transparent 60%
-    ),
-    linear-gradient(120deg, rgba(15, 23, 42, 0.06), rgba(2, 6, 23, 0.02));
-}
-
-/* Section spacing */
-section[id] {
-  scroll-margin-top: 96px;
-  padding-top: clamp(3.5rem, 6vw, 5rem);
-  padding-bottom: clamp(3.5rem, 6vw, 5rem);
-}
-
-.dark body::before {
-  background:
-    radial-gradient(
-      900px 520px at 10% -10%,
-      rgba(45, 212, 191, 0.2),
-      transparent 60%
-    ),
-    radial-gradient(
-      800px 600px at 90% 10%,
-      rgba(56, 189, 248, 0.22),
-      transparent 60%
-    ),
-    radial-gradient(
-      700px 560px at 82% 100%,
-      rgba(251, 191, 36, 0.18),
-      transparent 60%
-    ),
-    linear-gradient(120deg, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.2));
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  scroll-margin-top: 80px;
 }
 
 ::selection {
-  background: rgba(20, 184, 166, 0.25);
-  color: var(--page-fg);
+  background: var(--accent);
+  color: var(--bg);
 }
 
-/* Smooth animations */
-@supports (animation-timeline: scroll()) {
-  .scroll-reveal {
-    animation: reveal 0.6s ease forwards;
-    animation-timeline: view();
-    animation-range: entry 0% cover 30%;
-  }
-}
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
+@keyframes blink {
+  0%,
+  100% {
     opacity: 1;
-    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
   }
 }
 
-/* Glass morphism effect */
-.glass-effect {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* Ensure proper rendering */
-html {
-  -webkit-text-size-adjust: 100%;
+.cursor-blink {
+  animation: blink 1s step-end infinite;
 }

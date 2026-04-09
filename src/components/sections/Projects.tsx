@@ -1,214 +1,56 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { useTheme } from "@/lib/theme-context";
 import { PROJECTS } from "@/lib/constants";
 
-interface ProjectCardProps {
-  project: (typeof PROJECTS)[0];
-  index: number;
-}
-
-function ProjectCard({ project, index }: ProjectCardProps) {
-  const { isDark } = useTheme();
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="h-96"
-    >
-      <motion.div
-        animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6 }}
-        style={{ perspective: 1200 }}
-        className="w-full h-full"
-      >
-        <div
-          onClick={() => setIsFlipped(!isFlipped)}
-          className="cursor-pointer w-full h-full relative"
-          style={{
-            transformStyle: "preserve-3d",
-            transition: "transform 0.6s",
-          }}
-        >
-          <div
-            style={{
-              backfaceVisibility: "hidden",
-              WebkitBackfaceVisibility: "hidden",
-              position: "absolute",
-              inset: 0,
-            }}
-          >
-            <GlassCard
-              hover
-              className={`p-8 h-full flex flex-col justify-between bg-gradient-to-br ${project.color}`}
-            >
-              <div>
-                <h3
-                  className={`text-2xl font-bold mb-3
-                  ${isDark ? "text-white" : "text-gray-900"}
-                `}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  className={`text-sm mb-4
-                  ${isDark ? "text-gray-400" : "text-gray-600"}
-                `}
-                >
-                  Click to see details
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.slice(0, 2).map((tech) => (
-                  <span
-                    key={tech}
-                    className={`text-xs px-3 py-1 rounded-full backdrop-blur
-                      ${
-                        isDark
-                          ? "bg-white/10 text-cyan-300"
-                          : "bg-white/20 text-cyan-600"
-                      }
-                    `}
-                  >
-                    {tech}
-                  </span>
-                ))}
-                {project.technologies.length > 2 && (
-                  <span
-                    className={`text-xs px-3 py-1 rounded-full backdrop-blur
-                      ${
-                        isDark
-                          ? "bg-white/10 text-cyan-300"
-                          : "bg-white/20 text-cyan-600"
-                      }
-                    `}
-                  >
-                    +{project.technologies.length - 2}
-                  </span>
-                )}
-              </div>
-            </GlassCard>
-          </div>
-
-          <div
-            style={{
-              backfaceVisibility: "hidden",
-              WebkitBackfaceVisibility: "hidden",
-              transform: "rotateY(180deg)",
-              position: "absolute",
-              inset: 0,
-            }}
-          >
-            <GlassCard className="p-8 h-full flex flex-col justify-between">
-              <div>
-                <h3
-                  className={`text-xl font-bold mb-3
-                  ${isDark ? "text-white" : "text-gray-900"}
-                `}
-                >
-                  {project.title}
-                </h3>
-                <p
-                  className={`text-sm leading-relaxed
-                  ${isDark ? "text-gray-300" : "text-gray-700"}
-                `}
-                >
-                  {project.description}
-                </p>
-              </div>
-
-              <div className="flex gap-3 flex-wrap">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className={`text-xs px-2 py-1 rounded-full
-                      ${
-                        isDark
-                          ? "bg-cyan-500/20 text-cyan-300"
-                          : "bg-cyan-400/20 text-cyan-600"
-                      }
-                    `}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </GlassCard>
-          </div>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
 export function Projects() {
-  const { isDark } = useTheme();
-
   return (
-    <section
-      id="projects"
-      className="relative py-20 md:py-24 flex justify-center"
-    >
-      <div className="w-full max-w-6xl px-6 sm:px-8 lg:px-10">
-        <motion.h2
+    <section id="projects" className="py-24 border-t border-[var(--border)]">
+      <div className="wrap">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={`text-4xl md:text-5xl font-bold mb-10 text-center
-            ${isDark ? "text-white" : "text-gray-900"}
-          `}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
         >
-          Featured Projects
-        </motion.h2>
+          <h2 className="font-mono text-sm text-[var(--accent)] mb-10 flex items-center gap-3">
+            <span className="inline-block w-1 h-4 bg-[var(--accent)] rounded-full" />
+            // projects
+          </h2>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className={`text-center max-w-2xl mx-auto mb-14
-            ${isDark ? "text-gray-400" : "text-gray-600"}
-          `}
-        >
-          Click on any project card to flip and see more details. These projects
-          showcase my ability to build practical, real-world applications.
-        </motion.p>
+          <div className="space-y-6">
+            {PROJECTS.map((project, index) => (
+              <div
+                key={project.id}
+                className="group p-6 border border-[var(--border)] rounded hover:border-[var(--accent)] transition-colors"
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-lg font-medium text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">
+                    {project.title}
+                  </h3>
+                  <span className="font-mono text-xs text-[var(--text-secondary)] shrink-0 ml-4">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {PROJECTS.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
+                <p className="text-sm text-[var(--text-secondary)] mb-4 leading-relaxed">
+                  {project.description}
+                </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center"
-        >
-          <GlassCard className="p-10 bg-gradient-to-r from-purple-500/10 to-pink-500/10">
-            <h3
-              className={`text-2xl font-bold mb-4
-              ${isDark ? "text-white" : "text-gray-900"}
-            `}
-            >
-              Coming Soon: 3D Project Explorer
-            </h3>
-            <p
-              className={`max-w-xl mx-auto
-              ${isDark ? "text-gray-400" : "text-gray-600"}
-            `}
-            >
-              Upcoming: Interactive 3D planet-style project exploration. Drag
-              and explore projects in an immersive 3D environment.
-            </p>
-          </GlassCard>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="font-mono text-xs px-2 py-1 bg-[var(--surface)] border border-[var(--border)] rounded text-[var(--text-secondary)]"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
