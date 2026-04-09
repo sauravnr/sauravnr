@@ -111,7 +111,7 @@ export function Projects() {
                         className="font-mono hover:text-[var(--accent)] transition-colors"
                         style={{ fontSize: '0.7rem', color: 'var(--accent)', textDecoration: 'none' }}
                       >
-                        live ↗
+                        {project.demo.includes('play.google.com') ? 'play store ↗' : 'live ↗'}
                       </a>
                     )}
                     <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>

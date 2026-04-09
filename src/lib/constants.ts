@@ -2,25 +2,25 @@
 export const PROJECTS = [
   {
     id: 1,
-    title: "IPO Tracking App",
+    title: "My IPO App",
     description:
-      "A React Native mobile application that helps users track IPO listings, details, and updates with a clean and intuitive UI.",
-    technologies: ["React Native", "JavaScript", "Mobile UI/UX"],
+      "A comprehensive utility app for Nepalese stock market investors to manage multiple Meroshare accounts, apply for IPOs in bulk, check IPO results, track portfolios, and access financial tools — all from a single mobile app.",
+    technologies: ["React Native", "Expo", "React", "TypeScript", "Hermes"],
     images: [],
-    github: "https://github.com/sauravnr/my-ipo-app",
-    demo: "",
-    status: "private",
+    github: "",
+    demo: "", // add Play Store URL here once verified
+    status: "in-progress",
   },
   {
     id: 2,
-    title: "Hare Krishna Farm",
+    title: "Hare Krishna Dairy Farm",
     description:
-      "A production website built for a real farm, focusing on clarity, trust, and simple user experience.",
-    technologies: ["React", "Tailwind CSS", "Web Design"],
+      "A modern, bilingual (English & Nepali), responsive website for Hare Krishna Krishi Tatha Pashu Panchhi Farm — a registered small-scale village farm in Nepal. Showcases fresh dairy products with smooth animations and full internationalisation.",
+    technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "next-intl"],
     images: [],
-    github: "https://github.com/sauravnr/harekrishnakrishi",
-    demo: "",
-    status: "in-progress",
+    github: "",
+    demo: "https://hkk.com.np",
+    status: "live",
   },
   {
     id: 3,
