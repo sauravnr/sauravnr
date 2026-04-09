@@ -96,8 +96,8 @@ With a strong focus on React and React Native, I enjoy turning complex ideas int
 More builder than talker. I learn by shipping.`;
 
 export const SOCIAL_LINKS = {
-  github: "https://github.com/sauravnr", // Update with your GitHub
-  linkedin: "https://linkedin.com/in/sauravniraula", // Update with your LinkedIn
-  twitter: "https://twitter.com/sauravnr", // Update with your Twitter
-  email: "hello@sauravniraula.com.np", // Update with your email
+  github: "https://github.com/sauravnr",
+  linkedin: "https://www.linkedin.com/in/sauravniroula01/",
+  twitter: "https://x.com/saurav_niroula",
+  email: "sauravniroula01@gmail.com",
 };
