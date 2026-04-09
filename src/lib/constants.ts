@@ -6,10 +6,10 @@ export const PROJECTS = [
     description:
       "A React Native mobile application that helps users track IPO listings, details, and updates with a clean and intuitive UI.",
     technologies: ["React Native", "JavaScript", "Mobile UI/UX"],
-    image: "/projects/ipo-app.svg",
-    github: "#",
-    demo: "#",
-    color: "from-cyan-500 to-blue-600",
+    image: "",
+    github: "https://github.com/sauravnr/my-ipo-app",
+    demo: "",
+    status: "private",
   },
   {
     id: 2,
@@ -17,10 +17,10 @@ export const PROJECTS = [
     description:
       "A production website built for a real farm, focusing on clarity, trust, and simple user experience.",
     technologies: ["React", "Tailwind CSS", "Web Design"],
-    image: "/projects/farm-website.svg",
-    github: "#",
-    demo: "#",
-    color: "from-green-500 to-emerald-600",
+    image: "",
+    github: "https://github.com/sauravnr/harekrishnakrishi",
+    demo: "",
+    status: "in-progress",
   },
   {
     id: 3,
@@ -28,10 +28,10 @@ export const PROJECTS = [
     description:
       "A full-stack web application for managing blood donors, blood requests, and availability for real-world emergency use cases.",
     technologies: ["MERN Stack", "MongoDB", "Express", "Node.js"],
-    image: "/projects/blood-donation.svg",
-    github: "#",
-    demo: "#",
-    color: "from-red-500 to-rose-600",
+    image: "",
+    github: "",
+    demo: "",
+    status: "screenshot",
   },
   {
     id: 4,
@@ -39,21 +39,21 @@ export const PROJECTS = [
     description:
       "A web-based management system to digitize daily farm operations and records with real-time data tracking.",
     technologies: ["React", "Node.js", "Database Design"],
-    image: "/projects/dairy-farm.svg",
-    github: "#",
-    demo: "#",
-    color: "from-amber-500 to-orange-600",
+    image: "",
+    github: "",
+    demo: "",
+    status: "screenshot",
   },
   {
     id: 5,
-    title: "Web & Mobile Ecosystem",
+    title: "LudoPi",
     description:
-      "Showcasing how React web and React Native mobile applications work together in a unified ecosystem.",
-    technologies: ["React", "React Native", "API Integration"],
-    image: "/projects/ecosystem.svg",
-    github: "#",
-    demo: "#",
-    color: "from-purple-500 to-pink-600",
+      "Real-time multiplayer Ludo game with matchmaking, in-game chat, player profiles, and Pi Network login integration.",
+    technologies: ["React 19", "Vite", "Socket.IO", "Node.js", "Express", "MongoDB", "Redis"],
+    image: "",
+    github: "",
+    demo: "https://ludopi.fun",
+    status: "live",
   },
 ];
 

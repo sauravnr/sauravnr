@@ -30,24 +30,41 @@ export function Projects() {
                 onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
               >
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                  <h3 className="font-medium text-[var(--text)]" style={{ fontSize: '1.05rem' }}>
-                    {project.title}
-                  </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                    <h3 className="font-medium text-[var(--text)]" style={{ fontSize: '1.05rem' }}>
+                      {project.title}
+                    </h3>
+                    {project.status === 'live' && (
+                      <span className="font-mono" style={{ fontSize: '0.65rem', padding: '0.2rem 0.5rem', backgroundColor: 'var(--accent-muted)', border: '1px solid var(--accent)', borderRadius: '4px', color: 'var(--accent)' }}>
+                        live
+                      </span>
+                    )}
+                    {project.status === 'in-progress' && (
+                      <span className="font-mono" style={{ fontSize: '0.65rem', padding: '0.2rem 0.5rem', backgroundColor: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '4px', color: 'var(--text-secondary)' }}>
+                        in progress
+                      </span>
+                    )}
+                    {project.status === 'private' && (
+                      <span className="font-mono" style={{ fontSize: '0.65rem', padding: '0.2rem 0.5rem', backgroundColor: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '4px', color: 'var(--text-secondary)' }}>
+                        private
+                      </span>
+                    )}
+                  </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0, marginLeft: '1rem' }}>
-                    {project.github !== '#' && (
+                    {project.github && (
                       <a href={project.github} target="_blank" rel="noopener noreferrer"
                         className="font-mono hover:text-[var(--accent)] transition-colors"
                         style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textDecoration: 'none' }}
                       >
-                        github
+                        github ↗
                       </a>
                     )}
-                    {project.demo !== '#' && (
+                    {project.demo && (
                       <a href={project.demo} target="_blank" rel="noopener noreferrer"
                         className="font-mono hover:text-[var(--accent)] transition-colors"
-                        style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textDecoration: 'none' }}
+                        style={{ fontSize: '0.7rem', color: 'var(--accent)', textDecoration: 'none' }}
                       >
-                        live
+                        live ↗
                       </a>
                     )}
                     <span className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>
