@@ -207,7 +207,7 @@ export function Projects() {
                         className="font-mono hover:text-[var(--accent)] transition-colors"
                         style={{ fontSize: "0.7rem", color: "var(--text-secondary)", textDecoration: "none" }}
                       >
-                        github &#8599;
+                        github ↗
                       </a>
                     )}
                     {project.demo && (
@@ -215,7 +215,7 @@ export function Projects() {
                         className="font-mono hover:text-[var(--accent)] transition-colors"
                         style={{ fontSize: "0.7rem", color: "var(--accent)", textDecoration: "none" }}
                       >
-                        {project.demo.includes("play.google.com") ? "play store &#8599;" : "live &#8599;"}
+                        {project.demo.includes("play.google.com") ? "play store ↗" : "live ↗"}
                       </a>
                     )}
                     {project.images && project.images.length > 0 && (
@@ -224,7 +224,7 @@ export function Projects() {
                         className="font-mono hover:text-[var(--accent)] transition-colors"
                         style={{ fontSize: "0.7rem", color: "var(--text-secondary)", textDecoration: "none", background: "none", border: "none", cursor: "pointer", padding: 0 }}
                       >
-                        preview &#8599;
+                        preview ↗
                       </button>
                     )}
                     <span className="font-mono" style={{ fontSize: "0.7rem", color: "var(--text-secondary)" }}>

@@ -17,7 +17,8 @@ export function Loader({ onComplete }: { onComplete: () => void }) {
 
   useEffect(() => {
     if (visibleLines < codeLines.length) {
-      const delay = visibleLines === codeLines.length - 1 ? 400 : 120 + Math.random() * 180;
+      const delay =
+        visibleLines === codeLines.length - 1 ? 400 : 120 + Math.random() * 180;
       const timer = setTimeout(() => setVisibleLines((v) => v + 1), delay);
       return () => clearTimeout(timer);
     } else {
@@ -52,7 +53,9 @@ export function Loader({ onComplete }: { onComplete: () => void }) {
         >
           saurav.nr
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}
+        >
           {codeLines.slice(0, visibleLines).map((line, i) => (
             <div
               key={i}

@@ -39,7 +39,7 @@ export function Navigation() {
           className="font-mono text-sm font-medium hover:opacity-80 transition-opacity"
           style={{ cursor: 'pointer', color: 'var(--text)' }}
         >
-          saurav<span style={{ color: 'var(--accent)' }}>.</span>nr
+          <span style={{ color: 'var(--accent)' }}>{"{ "}</span>saurav<span style={{ color: 'var(--accent)' }}>{" }"}</span>
         </button>
 
         {/* Desktop */}
