@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
 interface ContactFormData {
   name: string;
@@ -27,22 +28,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // For now, just log the message and return success
-    // In production, integrate with Resend or another email service
-    console.log("Contact form submission:", {
-      name: body.name,
-      email: body.email,
-      message: body.message,
-      timestamp: new Date().toISOString(),
-    });
+    const resendApiKey = process.env.RESEND_API_KEY;
 
-    // You can integrate Resend here:
-    // const response = await resend.emails.send({
-    //   from: 'noreply@sauravniraula.com.np',
-    //   to: 'saurav@sauravniraula.com.np',
-    //   subject: `New Contact from ${body.name}`,
-    //   html: `<p><strong>Name:</strong> ${body.name}</p><p><strong>Email:</strong> ${body.email}</p><p><strong>Message:</strong> ${body.message}</p>`,
-    // });
+    if (!resendApiKey) {
+      console.error("RESEND_API_KEY not set");
+      return NextResponse.json(
+        { error: "Email service not configured" },
+        { status: 500 },
+      );
+    }
+
+    const resend = new Resend(resendApiKey);
+
+    await resend.emails.send({
+      from: "Portfolio Contact <onboarding@resend.dev>",
+      to: "sauravniroula01@gmail.com",
+      replyTo: body.email,
+      subject: `New message from ${body.name} — Portfolio`,
+      html: `
+        <div style="font-family: monospace; max-width: 600px;">
+          <h2 style="color: #3fb950;">New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${body.name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${body.email}">${body.email}</a></p>
+          <p><strong>Message:</strong></p>
+          <blockquote style="border-left: 3px solid #3fb950; padding-left: 1rem; color: #555;">${body.message.replace(/\n/g, "<br>")}</blockquote>
+          <hr />
+          <p style="color: #888; font-size: 0.8rem;">Sent from saurav.nr portfolio contact form</p>
+        </div>
+      `,
+    });
 
     return NextResponse.json(
       {
@@ -54,8 +68,10 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json(
-      { error: "Failed to process your message" },
+      { error: "Failed to send message" },
       { status: 500 },
     );
   }
+}
+
 }
