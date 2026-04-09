@@ -65,7 +65,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Email too long" }, { status: 400 });
     }
     if (body.message.length > 2000) {
-      return NextResponse.json({ error: "Message too long (max 2000 chars)" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Message too long (max 2000 chars)" },
+        { status: 400 },
+      );
     }
 
     // Email format validation
@@ -112,7 +115,10 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      { success: true, message: "Message received! I'll get back to you soon." },
+      {
+        success: true,
+        message: "Message received! I'll get back to you soon.",
+      },
       { status: 200 },
     );
   } catch (error) {
@@ -123,4 +129,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
