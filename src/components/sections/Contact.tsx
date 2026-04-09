@@ -94,17 +94,23 @@ export function Contact() {
                 onFocus={(e) => e.currentTarget.style.borderColor = 'var(--accent)'}
                 onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
               />
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={6}
-                placeholder="message"
-                style={{ ...inputStyle, resize: 'none' }}
-                onFocus={(e) => e.currentTarget.style.borderColor = 'var(--accent)'}
-                onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
-              />
+              <div>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={6}
+                  maxLength={2000}
+                  placeholder="message"
+                  style={{ ...inputStyle, resize: 'none' }}
+                  onFocus={(e) => e.currentTarget.style.borderColor = 'var(--accent)'}
+                  onBlur={(e) => e.currentTarget.style.borderColor = 'var(--border)'}
+                />
+                <p className="font-mono" style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textAlign: 'right', marginTop: '0.35rem' }}>
+                  {formData.message.length} / 2000
+                </p>
+              </div>
               <div style={{ marginTop: '0.5rem' }}>
                 <button
                   type="submit"
