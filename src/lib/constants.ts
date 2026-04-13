@@ -16,7 +16,13 @@ export const PROJECTS = [
     title: "Hare Krishna Dairy Farm",
     description:
       "A modern, bilingual (English & Nepali), responsive website for Hare Krishna Krishi Tatha Pashu Panchhi Farm — a registered small-scale village farm in Nepal. Showcases fresh dairy products with smooth animations and full internationalisation.",
-    technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "next-intl"],
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "next-intl",
+    ],
     images: [],
     github: "",
     demo: "https://hkk.com.np",
@@ -28,7 +34,11 @@ export const PROJECTS = [
     description:
       "An online blood management platform where donors can register and provide details to help people searching for blood. Built as a college project using PHP and MySQL.",
     technologies: ["PHP", "MySQL", "HTML5", "CSS", "JavaScript"],
-    images: ["/projects/blood-nation1.png", "/projects/blood-nation2.png", "/projects/blood-nation3.png"],
+    images: [
+      "/projects/blood-nation1.png",
+      "/projects/blood-nation2.png",
+      "/projects/blood-nation3.png",
+    ],
     github: "",
     demo: "",
     status: "screenshot",
@@ -39,7 +49,11 @@ export const PROJECTS = [
     description:
       "A web-based dairy farm management system to replace traditional pen-and-paper record keeping. Manages cow records, staff & salary, pregnancy & vaccine monitoring, milk and cow sales.",
     technologies: ["React", "Laravel", "MySQL"],
-    images: ["/projects/e-dairy1.png", "/projects/e-dairy2.png", "/projects/e-dairy3.png"],
+    images: [
+      "/projects/e-dairy1.png",
+      "/projects/e-dairy2.png",
+      "/projects/e-dairy3.png",
+    ],
     github: "",
     demo: "",
     status: "screenshot",
@@ -49,10 +63,29 @@ export const PROJECTS = [
     title: "LudoPi",
     description:
       "Real-time multiplayer Ludo game with matchmaking, in-game chat, player profiles, and Pi Network login integration.",
-    technologies: ["React 19", "Vite", "Socket.IO", "Node.js", "Express", "MongoDB", "Redis"],
+    technologies: [
+      "React 19",
+      "Vite",
+      "Socket.IO",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Redis",
+    ],
     images: [],
     github: "",
     demo: "https://ludopi.fun",
+    status: "live",
+  },
+  {
+    id: 6,
+    title: "ZimaPDF",
+    description:
+      "A free, open-source PDF editor that just works. Merge, split, compress, rotate, crop, edit, add watermarks, extract text with OCR, and more — entirely in your browser with no installation required. Secure, private, and supports files on any device.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Web APIs"],
+    images: [],
+    github: "",
+    demo: "https://zimapdf.com",
     status: "live",
   },
 ];
