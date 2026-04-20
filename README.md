@@ -4,11 +4,11 @@ Personal developer portfolio. Minimal, clean, techy.
 
 ## Stack
 
-- **Framework** — Next.js 16
-- **Language** — TypeScript
-- **Styling** — Tailwind CSS v4
-- **Animation** — Framer Motion
-- **Fonts** — Inter + JetBrains Mono
+- **Framework**: Next.js 16
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS v4
+- **Animation**: Framer Motion
+- **Fonts**: Inter + JetBrains Mono
 
 ## Getting Started
 
@@ -23,9 +23,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 \`\`\`
 src/
-  app/            # Pages, layout, API routes
-  components/     # Sections + UI primitives
-  lib/            # Constants, theme context
+app/ # Pages, layout, API routes
+components/ # Sections + UI primitives
+lib/ # Constants, theme context
 \`\`\`
 
 ## Design

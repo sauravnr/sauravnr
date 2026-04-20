@@ -37,7 +37,9 @@ html {
   box-sizing: border-box;
 }
 
-button, a, [role="button"] {
+button,
+a,
+[role="button"] {
   cursor: pointer !important;
 }
 
@@ -73,7 +75,7 @@ section[id] {
   animation: blink 1s step-end infinite;
 }
 
-/* Contact responsive grid — works without Tailwind */
+/* Contact responsive grid - works without Tailwind */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr;

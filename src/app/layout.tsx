@@ -14,9 +14,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Saurav Niraula — Full-Stack Developer",
+  title: "Saurav Niraula - Full-Stack Developer",
   description:
     "Full-stack developer specializing in React, React Native, and MERN stack applications.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

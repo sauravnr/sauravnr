@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
       from: "Portfolio Contact <contact@sauravniraula.com.np>",
       to: "sauravniroula02@gmail.com",
       replyTo: body.email,
-      subject: `New message from ${safeName} — Portfolio`,
+      subject: `New message from ${safeName} - Portfolio`,
       html: `
         <div style="font-family: monospace; max-width: 600px;">
           <h2 style="color: #3fb950;">New Contact Form Submission</h2>

@@ -4,7 +4,7 @@ export const PROJECTS = [
     id: 1,
     title: "My IPO App",
     description:
-      "A comprehensive utility app for Nepalese stock market investors to manage multiple Meroshare accounts, apply for IPOs in bulk, check IPO results, track portfolios, and access financial tools — all from a single mobile app.",
+      "A comprehensive utility app for Nepalese stock market investors to manage multiple Meroshare accounts, apply for IPOs in bulk, check IPO results, track portfolios, and access financial tools all from a single mobile app.",
     technologies: ["React Native", "Expo", "React", "TypeScript"],
     images: [],
     github: "",
@@ -15,7 +15,7 @@ export const PROJECTS = [
     id: 2,
     title: "Hare Krishna Dairy Farm",
     description:
-      "A modern, bilingual (English & Nepali), responsive website for Hare Krishna Krishi Tatha Pashu Panchhi Farm — a registered small-scale village farm in Nepal. Showcases fresh dairy products with smooth animations and full internationalisation.",
+      "A modern, bilingual (English & Nepali), responsive website for Hare Krishna Krishi Tatha Pashu Panchhi Farm, a registered small-scale village farm in Nepal. Showcases fresh dairy products with smooth animations and full internationalisation.",
     technologies: [
       "Next.js 15",
       "TypeScript",
@@ -81,7 +81,7 @@ export const PROJECTS = [
     id: 6,
     title: "ZimaPDF",
     description:
-      "A free, open-source PDF editor that just works. Merge, split, compress, rotate, crop, edit, add watermarks, extract text with OCR, and more — entirely in your browser with no installation required. Secure, private, and supports files on any device.",
+      "A free, open-source PDF editor that just works. Merge, split, compress, rotate, crop, edit, add watermarks, extract text with OCR, and more entirely in your browser with no installation required. Secure, private, and supports files on any device.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Web APIs"],
     images: [],
     github: "",

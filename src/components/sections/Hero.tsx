@@ -36,7 +36,7 @@ export function Hero() {
     <section id="home" className="min-h-screen flex items-center pt-14">
       <Container wide className="py-20">
         <div className="grid lg:grid-cols-[1fr_1fr] gap-12 xl:gap-16 items-center">
-          {/* Left — text */}
+          {/* Left - text */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,13 +55,16 @@ export function Hero() {
               Full-Stack Developer focused on clean UX and reliable systems.
             </p>
 
-            <p className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed" style={{ marginBottom: '3.5rem' }}>
+            <p
+              className="text-sm md:text-base text-[var(--text-secondary)] leading-relaxed"
+              style={{ marginBottom: "3.5rem" }}
+            >
               I build practical web and mobile apps that solve real-world
-              problems. React, React Native, MERN stack — turning complex ideas
+              problems. React, React Native, MERN stack - turning complex ideas
               into clean products people actually use.
             </p>
 
-            <div className="flex flex-wrap" style={{ gap: '1.25rem' }}>
+            <div className="flex flex-wrap" style={{ gap: "1.25rem" }}>
               <button
                 onClick={() =>
                   document
@@ -69,7 +72,14 @@ export function Hero() {
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
                 className="font-mono font-medium hover:opacity-90 transition-opacity"
-                style={{ fontSize: '0.95rem', padding: '0.85rem 2rem', backgroundColor: 'var(--accent)', color: 'var(--bg)', borderRadius: '6px', cursor: 'pointer' }}
+                style={{
+                  fontSize: "0.95rem",
+                  padding: "0.85rem 2rem",
+                  backgroundColor: "var(--accent)",
+                  color: "var(--bg)",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                }}
               >
                 view work
               </button>
@@ -80,14 +90,21 @@ export function Hero() {
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
                 className="font-mono hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors"
-                style={{ fontSize: '0.95rem', padding: '0.85rem 2rem', border: '1px solid var(--border)', color: 'var(--text-secondary)', borderRadius: '6px', cursor: 'pointer' }}
+                style={{
+                  fontSize: "0.95rem",
+                  padding: "0.85rem 2rem",
+                  border: "1px solid var(--border)",
+                  color: "var(--text-secondary)",
+                  borderRadius: "6px",
+                  cursor: "pointer",
+                }}
               >
                 get in touch
               </button>
             </div>
           </motion.div>
 
-          {/* Right — code block */}
+          {/* Right - code block */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
