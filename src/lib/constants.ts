@@ -8,7 +8,7 @@ export const PROJECTS = [
     technologies: ["React Native", "Expo", "React", "TypeScript"],
     images: [],
     github: "",
-    demo: "https://play.google.com/store/apps",
+    demo: "https://play.google.com/store/apps/details?id=com.sauravnr.MyIpoApp&pcampaignid=web_share",
     status: "live",
   },
   {
