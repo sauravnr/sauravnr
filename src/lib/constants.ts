@@ -1,5 +1,18 @@
 // Project data
-export const PROJECTS = [
+type Project = {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  images: string[];
+  github: string;
+  demo: string;
+  playStore?: string;
+  platform?: "mobile app" | "web + mobile";
+  status?: "live" | "in-progress" | "private" | "screenshot";
+};
+
+export const PROJECTS: Project[] = [
   {
     id: 1,
     title: "My IPO App",
@@ -8,8 +21,48 @@ export const PROJECTS = [
     technologies: ["React Native", "Expo", "React", "TypeScript"],
     images: [],
     github: "",
-    demo: "https://play.google.com/store/apps/details?id=com.sauravnr.MyIpoApp&pcampaignid=web_share",
+    demo: "",
+    playStore: "https://play.google.com/store/apps/details?id=com.sauravnr.MyIpoApp",
+    platform: "mobile app",
     status: "live",
+  },
+  {
+    id: 7,
+    title: "Sajilo Patro",
+    description:
+      "A Nepali calendar app with offline BS dates, festivals, holidays, panchang, and BS/AD date conversion. Brings weather, reminders, news, and Nepali radio together in one mobile app.",
+    technologies: ["React Native", "Expo", "JavaScript", "AsyncStorage"],
+    images: [],
+    github: "",
+    demo: "",
+    playStore: "https://play.google.com/store/apps/details?id=com.sajilopatro.app",
+    platform: "mobile app",
+    status: "live",
+  },
+  {
+    id: 8,
+    title: "Fendr",
+    description:
+      "A private messaging app with real-time chat, audio and video calls, voice notes, and live location sharing. Features encrypted messages, local chat history, friend requests, and encrypted Google Drive backups.",
+    technologies: ["Flutter", "Dart", "Firebase", "WebRTC", "SQLite"],
+    images: [],
+    github: "",
+    demo: "",
+    playStore: "https://play.google.com/store/apps/details?id=com.saurav.duochat",
+    platform: "mobile app",
+    status: "in-progress",
+  },
+  {
+    id: 9,
+    title: "ZimaPDF Mobile",
+    description:
+      "A mobile PDF toolkit to compress, merge, split, rotate, and protect documents on your device. Includes offline OCR, in-app PDF previews, and tools to save and share files.",
+    technologies: ["React Native", "Expo", "Expo Router", "pdf-lib", "ML Kit"],
+    images: [],
+    github: "",
+    demo: "",
+    playStore: "https://play.google.com/store/apps/details?id=com.zimapdf.mobile",
+    platform: "mobile app",
   },
   {
     id: 2,
@@ -60,11 +113,12 @@ export const PROJECTS = [
   },
   {
     id: 5,
-    title: "LudoPi",
+    title: "Ludo Pi",
     description:
-      "Real-time multiplayer Ludo game with matchmaking, in-game chat, player profiles, and Pi Network login integration.",
+      "A Ludo game for Android and the web with real-time multiplayer matches, private rooms, and in-game chat. Play offline against the computer or share a phone with friends in pass-and-play mode, with seasonal leaderboards and collectible boards, dice, and tokens.",
     technologies: [
       "React 19",
+      "Capacitor",
       "Vite",
       "Socket.IO",
       "Node.js",
@@ -75,6 +129,8 @@ export const PROJECTS = [
     images: [],
     github: "",
     demo: "https://ludopi.fun",
+    playStore: "https://play.google.com/store/apps/details?id=fun.ludopi.app",
+    platform: "web + mobile",
     status: "live",
   },
   {

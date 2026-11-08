@@ -180,11 +180,16 @@ export function Projects() {
                 onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
                 onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
               >
-                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "0.75rem" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: "0.75rem", marginBottom: "0.75rem" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
                     <h3 className="font-medium text-[var(--text)]" style={{ fontSize: "1.05rem" }}>
                       {project.title}
                     </h3>
+                    {project.platform && (
+                      <span className="font-mono" style={{ fontSize: "0.65rem", padding: "0.2rem 0.5rem", backgroundColor: "var(--surface)", border: "1px solid var(--border)", borderRadius: "4px", color: "var(--text-secondary)" }}>
+                        {project.platform}
+                      </span>
+                    )}
                     {project.status === "live" && (
                       <span className="font-mono" style={{ fontSize: "0.65rem", padding: "0.2rem 0.5rem", backgroundColor: "var(--accent-muted)", border: "1px solid var(--accent)", borderRadius: "4px", color: "var(--accent)" }}>
                         live
@@ -201,7 +206,7 @@ export function Projects() {
                       </span>
                     )}
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0, marginLeft: "1rem" }}>
+                  <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "0.75rem" }}>
                     {project.github && (
                       <a href={project.github} target="_blank" rel="noopener noreferrer"
                         className="font-mono hover:text-[var(--accent)] transition-colors"
@@ -212,10 +217,20 @@ export function Projects() {
                     )}
                     {project.demo && (
                       <a href={project.demo} target="_blank" rel="noopener noreferrer"
+                        aria-label={`Visit ${project.title}`}
                         className="font-mono hover:text-[var(--accent)] transition-colors"
                         style={{ fontSize: "0.7rem", color: "var(--accent)", textDecoration: "none" }}
                       >
-                        {project.demo.includes("play.google.com") ? "play store ↗" : "live ↗"}
+                        live ↗
+                      </a>
+                    )}
+                    {project.playStore && (
+                      <a href={project.playStore} target="_blank" rel="noopener noreferrer"
+                        aria-label={`${project.title} on Google Play`}
+                        className="font-mono hover:text-[var(--accent)] transition-colors"
+                        style={{ fontSize: "0.7rem", color: "var(--accent)", textDecoration: "none" }}
+                      >
+                        play store ↗
                       </a>
                     )}
                     {project.images && project.images.length > 0 && (
