@@ -65,6 +65,18 @@ export const PROJECTS: Project[] = [
     platform: "mobile app",
   },
   {
+    id: 10,
+    title: "Abhigat Staff",
+    description:
+      "A mobile app for restaurant, cafe, and hotel staff to handle guest requests submitted through QR codes. Staff can view live queues, claim and complete tasks, manage availability, receive urgent alerts, and queue actions offline.",
+    technologies: ["React Native", "Expo", "TypeScript", "Supabase"],
+    images: [],
+    github: "",
+    demo: "",
+    playStore: "https://play.google.com/store/apps/details?id=com.abhigat.staff",
+    platform: "mobile app",
+  },
+  {
     id: 2,
     title: "Hare Krishna Dairy Farm",
     description:
