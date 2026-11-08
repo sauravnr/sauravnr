@@ -9,19 +9,34 @@ const skillGroups = [
     label: "frontend",
     skills: [
       "React",
-      "React Native",
+      "Next.js",
       "TypeScript",
       "JavaScript",
       "Tailwind CSS",
     ],
   },
   {
-    label: "backend",
-    skills: ["Node.js", "Express", "MongoDB", "PHP", "Laravel", "MySQL"],
+    label: "mobile",
+    skills: ["Flutter", "Dart", "React Native", "Expo", "Capacitor"],
+  },
+  {
+    label: "backend & databases",
+    skills: [
+      "Node.js",
+      "Express",
+      "PHP",
+      "Laravel",
+      "Firebase",
+      "Supabase",
+      "MongoDB",
+      "MySQL",
+      "Redis",
+      "SQLite",
+    ],
   },
   {
     label: "tools & practices",
-    skills: ["Socket.IO", "REST APIs", "Git", "API Integration", "UI/UX Design"],
+    skills: ["Socket.IO", "WebRTC", "REST APIs", "Git", "API Integration", "UI/UX Design"],
   },
 ];
 
