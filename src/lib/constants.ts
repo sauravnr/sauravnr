@@ -50,7 +50,7 @@ export const PROJECTS: Project[] = [
     demo: "",
     playStore: "https://play.google.com/store/apps/details?id=com.saurav.duochat",
     platform: "mobile app",
-    status: "in-progress",
+    status: "live",
   },
   {
     id: 9,
@@ -63,6 +63,7 @@ export const PROJECTS: Project[] = [
     demo: "",
     playStore: "https://play.google.com/store/apps/details?id=com.zimapdf.mobile",
     platform: "mobile app",
+    status: "live",
   },
   {
     id: 10,
@@ -75,6 +76,7 @@ export const PROJECTS: Project[] = [
     demo: "",
     playStore: "https://play.google.com/store/apps/details?id=com.abhigat.staff",
     platform: "mobile app",
+    status: "live",
   },
   {
     id: 2,
